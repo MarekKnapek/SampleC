@@ -17,6 +17,7 @@ extern __declspec(dllimport) mk_size_t __stdcall HeapSize(mk_win_handle_t, mk_wi
 extern __declspec(dllimport) mk_win_bool_t __stdcall HeapFree(mk_win_handle_t, mk_win_dword_t, void*);
 extern __declspec(dllimport) mk_win_bool_t __stdcall HeapDestroy(mk_win_handle_t);
 extern __declspec(dllimport) mk_win_dword_t __stdcall GetTickCount(void);
+extern __declspec(dllimport) void __stdcall OutputDebugStringA(char const*);
 
 
 void mk_win_kernel_debug_break(void)
@@ -141,4 +142,9 @@ mk_win_dword_t mk_win_kernel_get_tick_count(void)
 
 	ret = GetTickCount();
 	return ret;
+}
+
+void mk_win_kernel_output_debug_string(char const* const str)
+{
+	OutputDebugStringA(str);
 }
