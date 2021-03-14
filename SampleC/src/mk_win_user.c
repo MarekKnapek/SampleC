@@ -26,6 +26,8 @@ extern __declspec(dllimport) mk_win_bool_t __stdcall PostMessageW(mk_win_user_hw
 extern __declspec(dllimport) void __stdcall PostQuitMessage(int);
 extern __declspec(dllimport) int __stdcall MessageBoxA(mk_win_user_hwnd_t, char const*, char const*, mk_win_uint_t);
 extern __declspec(dllimport) mk_win_bool_t __stdcall SetWindowTextW(mk_win_user_hwnd_t, mk_win_widechar_t const*);
+extern __declspec(dllimport) mk_size_t __stdcall SetTimer(mk_win_user_hwnd_t, mk_size_t, mk_win_uint_t, mk_win_user_timer_proc_t);
+extern __declspec(dllimport) mk_win_bool_t __stdcall KillTimer(mk_win_user_hwnd_t, mk_size_t);
 
 
 mk_win_user_icon_t mk_win_user_load_icon(mk_win_user_icon_id_t const icon_id)
@@ -223,5 +225,23 @@ mk_bool_t mk_win_user_set_window_text(mk_win_user_hwnd_t const hwnd, mk_win_wide
 
 	set = SetWindowTextW(hwnd, text);
 	ret = set.m_value == 0 ? MK_TRUE : MK_FALSE;
+	return ret;
+}
+
+mk_size_t mk_win_user_set_timer(mk_win_user_hwnd_t const hwnd, mk_size_t const id, mk_win_uint_t const elapse, mk_win_user_timer_proc_t const proc)
+{
+	mk_size_t ret;
+
+	ret = SetTimer(hwnd, id, elapse, proc);
+	return ret;
+}
+
+mk_bool_t mk_win_user_kill_timer(mk_win_user_hwnd_t const hwnd, mk_size_t const id)
+{
+	mk_win_bool_t killed;
+	mk_bool_t ret;
+
+	killed = KillTimer(hwnd, id);
+	ret = killed.m_value != 0 ? MK_TRUE : MK_FALSE;
 	return ret;
 }

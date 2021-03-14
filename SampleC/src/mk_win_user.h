@@ -330,6 +330,12 @@ struct mk_win_user_wm_create_s
 };
 typedef struct mk_win_user_wm_create_s mk_win_user_wm_create_t;
 
+struct mk_win_user_timer_proc_s
+{
+	void(__stdcall*m_value)(mk_win_user_hwnd_t const hwnd, mk_win_uint_t const msg, mk_size_t const id, mk_win_dword_t const time);
+};
+typedef struct mk_win_user_timer_proc_s mk_win_user_timer_proc_t;
+
 
 mk_win_user_icon_t mk_win_user_load_icon(mk_win_user_icon_id_t const icon_id);
 mk_win_user_cursor_t mk_win_user_load_cursor(mk_win_user_cursor_id_t const cursor_id);
@@ -351,6 +357,8 @@ mk_bool_t mk_win_user_post_message(mk_win_user_hwnd_t const hwnd, mk_win_user_wm
 void mk_win_user_post_quit_message(int const exit_code);
 int mk_win_user_message_boxa(mk_win_user_hwnd_t const hwnd, char const* const text, char const* const caption, mk_win_user_mb_t const type);
 mk_bool_t mk_win_user_set_window_text(mk_win_user_hwnd_t const hwnd, mk_win_widechar_t const* const text);
+mk_size_t mk_win_user_set_timer(mk_win_user_hwnd_t const hwnd, mk_size_t const id, mk_win_uint_t const elapse, mk_win_user_timer_proc_t const proc);
+mk_bool_t mk_win_user_kill_timer(mk_win_user_hwnd_t const hwnd, mk_size_t const id);
 
 
 #endif
