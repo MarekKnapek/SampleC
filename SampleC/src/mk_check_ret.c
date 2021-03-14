@@ -16,7 +16,7 @@ void mk_report(int const line)
 	mk_win_user_mb_t type;
 	int msg;
 
-	ptr = mk_to_chars(buffer, buffer + 12, line);
+	ptr = mk_to_chars_sint32(buffer, buffer + 12, line);
 	*ptr = '\0';
 
 	hwnd.m_value = MK_NULL;

@@ -3,24 +3,46 @@
 #include "mk_assert.h"
 
 
-char* mk_to_chars(char* const begin, char* const end, int const value)
+char* mk_to_chars_sint32(char* const begin, char const* const end, mk_sint32_t const value)
 {
-	int n;
-	int places;
+	mk_sint32_t positive;
+	mk_uint32_t uint32;
 	char* ptr;
-	int digit;
-	int i;
+	char* ret;
 
-	MK_ASSERT(begin <= end);
+	MK_ASSERT(begin <= end && end - begin >= 1);
 
 	if(value < 0)
 	{
-		n = -value;
+		positive = -value;
 	}
 	else
 	{
-		n = value;
+		positive = value;
 	}
+	uint32 = (mk_uint32_t)positive;
+
+	ptr = begin;
+	if(value < 0)
+	{
+		ptr[0] = '-';
+		++ptr;
+	}
+	ret = mk_to_chars_uint32(ptr, end, uint32);
+	return ret;
+}
+
+char* mk_to_chars_uint32(char* const begin, char const* const end, mk_uint32_t const value)
+{
+	mk_uint32_t n;
+	int places;
+	int i;
+	int digit;
+	char* ret;
+
+	MK_ASSERT(begin <= end);
+
+	n = value;
 	if(n < 10)
 	{
 		places = 1;
@@ -61,22 +83,16 @@ char* mk_to_chars(char* const begin, char* const end, int const value)
 	{
 		places = 10;
 	}
-	MK_ASSERT(end - begin >= places + (value < 0 ? 1 : 0));
+	MK_ASSERT(end - begin >= places);
 
-	ptr = begin;
-	if(value < 0)
-	{
-		ptr[0] = '-';
-		++ptr;
-	}
 	for(i = 0; i != places - 1; ++i)
 	{
 		digit = n % 10;
 		n = n / 10;
-		ptr[places - 1 - i] = (char)('0' + digit);
+		begin[places - 1 - i] = (char)('0' + digit);
 	}
-	ptr[0] = (char)('0' + n);
+	begin[0] = (char)('0' + n);
 
-	ptr += places;
-	return ptr;
+	ret = begin + places;
+	return ret;
 }
