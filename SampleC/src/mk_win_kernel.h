@@ -91,6 +91,7 @@ void mk_win_kernel_initialize_critical_section(mk_win_kernel_critical_section_t*
 void mk_win_kernel_enter_critical_section(mk_win_kernel_critical_section_t* const critical_section);
 void mk_win_kernel_leave_critical_section(mk_win_kernel_critical_section_t* const critical_section);
 void mk_win_kernel_delete_critical_section(mk_win_kernel_critical_section_t* const critical_section);
+mk_win_handle_t mk_win_kernel_get_process_heap(void);
 mk_win_handle_t mk_win_kernel_heap_create(mk_win_kernel_heap_create_t const options, mk_size_t const initial_size, mk_size_t const maximum_size);
 void* mk_win_kernel_heap_alloc(mk_win_handle_t const heap, mk_win_kernel_heap_alloc_t const flags, mk_size_t const bytes);
 void* mk_win_kernel_heap_realloc(mk_win_handle_t const heap, mk_win_kernel_heap_realloc_t const flags, void* const mem, mk_size_t const bytes);

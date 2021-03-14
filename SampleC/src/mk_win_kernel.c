@@ -9,6 +9,7 @@ extern __declspec(dllimport) void __stdcall InitializeCriticalSection(mk_win_ker
 extern __declspec(dllimport) void __stdcall EnterCriticalSection(mk_win_kernel_critical_section_t*);
 extern __declspec(dllimport) void __stdcall LeaveCriticalSection(mk_win_kernel_critical_section_t*);
 extern __declspec(dllimport) void __stdcall DeleteCriticalSection(mk_win_kernel_critical_section_t*);
+extern __declspec(dllimport) mk_win_handle_t __stdcall GetProcessHeap(void);
 extern __declspec(dllimport) mk_win_handle_t __stdcall HeapCreate(mk_win_dword_t, mk_size_t, mk_size_t);
 extern __declspec(dllimport) void* __stdcall HeapAlloc(mk_win_handle_t, mk_win_dword_t, mk_size_t);
 extern __declspec(dllimport) void* __stdcall HeapReAlloc(mk_win_handle_t, mk_win_dword_t, void*, mk_size_t);
@@ -61,6 +62,14 @@ void mk_win_kernel_leave_critical_section(mk_win_kernel_critical_section_t* cons
 void mk_win_kernel_delete_critical_section(mk_win_kernel_critical_section_t* const critical_section)
 {
 	DeleteCriticalSection(critical_section);
+}
+
+mk_win_handle_t mk_win_kernel_get_process_heap(void)
+{
+	mk_win_handle_t ret;
+
+	ret = GetProcessHeap();
+	return ret;
 }
 
 mk_win_handle_t mk_win_kernel_heap_create(mk_win_kernel_heap_create_t const options, mk_size_t const initial_size, mk_size_t const maximum_size)
