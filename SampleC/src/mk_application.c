@@ -1,9 +1,11 @@
 #include "mk_application.h"
 
-#include "mk_win_user.h"
-#include "mk_win_kernel.h"
-#include "mk_check_ret.h"
 #include "mk_assert.h"
+#include "mk_charconv.h"
+#include "mk_check_ret.h"
+#include "mk_ints.h"
+#include "mk_win_kernel.h"
+#include "mk_win_user.h"
 
 
 static mk_application_t* mk_application_g_application;
@@ -19,6 +21,23 @@ void mk_application_set(mk_application_t* const application)
 	mk_application_g_application = application;
 }
 
+void __stdcall mk_application_timer_proc(mk_win_user_hwnd_t const hwnd, mk_win_uint_t const msg, mk_size_t const id, mk_win_dword_t const time)
+{
+	mk_win_dword_t curr_time;
+	mk_uint32_t msgs_per_second;
+	char buffer[12 + 3];
+	char* end;
+
+	curr_time = mk_win_kernel_get_tick_count();
+	msgs_per_second = mk_counter_get_count(&mk_application_g_application->m_counter, curr_time.m_value);
+	end = mk_to_chars_uint32(buffer, buffer + 12, msgs_per_second);
+	end[0] = '\x0D';
+	end[1] = '\x0A';
+	end[2] = '\0';
+
+	mk_win_kernel_output_debug_string(buffer);
+}
+
 
 void mk_application_construct(mk_application_t* const self, mk_win_instance_t const instance, mk_win_widechar_t const* const cmd_line, int const cmd_show)
 {
@@ -27,10 +46,12 @@ void mk_application_construct(mk_application_t* const self, mk_win_instance_t co
 	self->m_cmd_show = cmd_show;
 	mk_task_queue_construct(&self->m_idle_tasks);
 	self->m_main_window = MK_NULL;
+	mk_counter_construct(&self->m_counter, 2000, 250);
 }
 
 void mk_application_destroy(mk_application_t* const self)
 {
+	mk_counter_destroy(&self->m_counter);
 	mk_task_queue_destroy(&self->m_idle_tasks);
 }
 
@@ -43,16 +64,25 @@ mk_win_instance_t mk_application_get_instance(mk_application_t const* const self
 
 int mk_application_run(mk_application_t* const self)
 {
+	mk_win_user_hwnd_t const timer_hwnd = {MK_NULL};
+	mk_win_uint_t const timer_elapse = {1000};
+	mk_win_user_timer_proc_t const timer_proc = {&mk_application_timer_proc};
+
+	mk_bool_t timer_killed;
+
 	mk_main_window_t main_window;
+	mk_size_t timer_id;
 	int exit_code;
 
 	mk_main_window_register_class();
 	mk_main_window_construct(&main_window);
 	self->m_main_window = &main_window;
 	mk_win_user_show_window(mk_main_window_get_hwnd(&main_window), self->m_cmd_show);
+	timer_id = mk_win_user_set_timer(timer_hwnd, 0, timer_elapse, timer_proc); MK_ASSERT(timer_id != 0);
 
 	exit_code = mk_application_run_message_loop(self);
 
+	timer_killed = mk_win_user_kill_timer(timer_hwnd, timer_id); MK_ASSERT(timer_killed);
 	mk_main_window_destroy(&main_window);
 	MK_ASSERT((self->m_main_window = MK_NULL, MK_TRUE));
 	mk_main_window_unregister_class();
@@ -85,6 +115,7 @@ int mk_application_run_message_loop(mk_application_t* const self)
 
 	mk_win_user_msg_t msg;
 	mk_bool_t peeked;
+	mk_win_dword_t curr_time;
 	mk_bool_t translated;
 	mk_win_user_lresult_t dispatched;
 	mk_bool_t idled;
@@ -101,6 +132,8 @@ int mk_application_run_message_loop(mk_application_t* const self)
 				break;
 			}
 			translate:
+			curr_time = mk_win_kernel_get_tick_count();
+			mk_counter_count(&self->m_counter, curr_time.m_value, 1);
 			translated = mk_win_user_translate_message(&msg);
 			dispatched = mk_win_user_dispatch_message(&msg);
 		}
