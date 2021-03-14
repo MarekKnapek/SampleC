@@ -98,6 +98,7 @@ void* mk_win_kernel_heap_realloc(mk_win_handle_t const heap, mk_win_kernel_heap_
 mk_size_t mk_win_kernel_heap_size(mk_win_handle_t const heap, mk_win_kernel_heap_size_t const flags, void* const mem);
 mk_bool_t mk_win_kernel_heap_free(mk_win_handle_t const heap, mk_win_kernel_heap_free_t const flags, void* const mem);
 mk_bool_t mk_win_kernel_heap_destroy(mk_win_handle_t const heap);
+mk_win_dword_t mk_win_kernel_get_tick_count(void);
 
 
 #endif
