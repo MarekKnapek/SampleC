@@ -2,6 +2,7 @@
 #include "../src/mk_allocator_global.c"
 #include "../src/mk_allocator_heap.c"
 #include "../src/mk_allocator_heap_mt.c"
+#include "../src/mk_allocator_process_heap.c"
 #include "../src/mk_application.c"
 #include "../src/mk_charconv.c"
 #include "../src/mk_check_ret.c"

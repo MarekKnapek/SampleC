@@ -64,7 +64,8 @@ SBRS = MK_ALLOCATOR_HEAP.SBR \
 		MK_ALLOCATOR.SBR \
 		MK_ALLOCATOR_HEAP_MT.SBR \
 		MK_MEM.SBR \
-		MK_TASK_QUEUE.SBR
+		MK_TASK_QUEUE.SBR \
+		MK_ALLOCATOR_PROCESS_HEAP.SBR
 
 
 MK_ALLOCATOR_HEAP_DEP =  \
@@ -193,7 +194,7 @@ MK_ALLOCATOR_GLOBAL_DEP =  \
 	c:\dev\projekty\samplec\samplec\src\mk_types.h \
 	c:\dev\projekty\samplec\samplec\src\mk_macros.h \
 	c:\dev\projekty\samplec\samplec\src\mk_allocator.h \
-	c:\dev\projekty\samplec\samplec\src\mk_allocator_heap_mt.h \
+	c:\dev\projekty\samplec\samplec\src\mk_allocator_process_heap.h \
 	c:\dev\projekty\samplec\samplec\src\mk_windows.h
 
 
@@ -203,7 +204,8 @@ MK_ALLOCATOR_DEP =  \
 	c:\dev\projekty\samplec\samplec\src\mk_macros.h \
 	c:\dev\projekty\samplec\samplec\src\mk_allocator_heap.h \
 	c:\dev\projekty\samplec\samplec\src\mk_windows.h \
-	c:\dev\projekty\samplec\samplec\src\mk_allocator_heap_mt.h
+	c:\dev\projekty\samplec\samplec\src\mk_allocator_heap_mt.h \
+	c:\dev\projekty\samplec\samplec\src\mk_allocator_process_heap.h
 
 
 MK_ALLOCATOR_HEAP_MT_DEP =  \
@@ -238,6 +240,16 @@ MK_TASK_QUEUE_DEP =  \
 	c:\dev\projekty\samplec\samplec\src\mk_check_ret.h \
 	c:\dev\projekty\samplec\samplec\src\mk_allocator_global.h \
 	c:\dev\projekty\samplec\samplec\src\mk_allocator.h
+
+
+MK_ALLOCATOR_PROCESS_HEAP_DEP =  \
+	c:\dev\projekty\samplec\samplec\src\mk_allocator_process_heap.h \
+	c:\dev\projekty\samplec\samplec\src\mk_windows.h \
+	c:\dev\projekty\samplec\samplec\src\mk_types.h \
+	c:\dev\projekty\samplec\samplec\src\mk_macros.h \
+	c:\dev\projekty\samplec\samplec\src\mk_win_kernel.h \
+	c:\dev\projekty\samplec\samplec\src\mk_check_ret.h \
+	c:\dev\projekty\samplec\samplec\src\mk_assert.h
 
 
 all:	$(PROJ).EXE $(PROJ).BSC
@@ -293,11 +305,14 @@ MK_MEM.OBJ:	..\..\SRC\MK_MEM.C $(MK_MEM_DEP)
 MK_TASK_QUEUE.OBJ:	..\..\SRC\MK_TASK_QUEUE.C $(MK_TASK_QUEUE_DEP)
 	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c ..\..\SRC\MK_TASK_QUEUE.C
 
+MK_ALLOCATOR_PROCESS_HEAP.OBJ:	..\..\SRC\MK_ALLOCATOR_PROCESS_HEAP.C $(MK_ALLOCATOR_PROCESS_HEAP_DEP)
+	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c ..\..\SRC\MK_ALLOCATOR_PROCESS_HEAP.C
+
 
 $(PROJ).EXE:	MK_ALLOCATOR_HEAP.OBJ MK_APPLICATION.OBJ MK_CHARCONV.OBJ MK_CHECK_RET.OBJ \
 	MK_LOCK_CRITICAL_SECTION.OBJ MK_MAIN.OBJ MK_MAIN_WINDOW.OBJ MK_PRIMITIVES_INSTANTIATION.OBJ \
 	MK_TYPES.OBJ MK_VECTOR_INSTANTIATION.OBJ MK_WIN_KERNEL.OBJ MK_WIN_USER.OBJ MK_ALLOCATOR_GLOBAL.OBJ \
-	MK_ALLOCATOR.OBJ MK_ALLOCATOR_HEAP_MT.OBJ MK_MEM.OBJ MK_TASK_QUEUE.OBJ $(OBJS_EXT) $(LIBS_EXT)
+	MK_ALLOCATOR.OBJ MK_ALLOCATOR_HEAP_MT.OBJ MK_MEM.OBJ MK_TASK_QUEUE.OBJ MK_ALLOCATOR_PROCESS_HEAP.OBJ $(OBJS_EXT) $(LIBS_EXT)
 	echo >NUL @<<$(PROJ).CRF
 MK_ALLOCATOR_HEAP.OBJ 
 MK_APPLICATION.OBJ 
@@ -316,6 +331,7 @@ MK_ALLOCATOR.OBJ
 MK_ALLOCATOR_HEAP_MT.OBJ 
 MK_MEM.OBJ 
 MK_TASK_QUEUE.OBJ 
+MK_ALLOCATOR_PROCESS_HEAP.OBJ 
 $(OBJS_EXT)
 -OUT:$(PROJ).EXE
 $(MAPFILE_OPTION)

@@ -138,7 +138,8 @@ BSC32_SBRS= \
 	.\DebugIB\mk_allocator_heap_mt.sbr \
 	.\DebugIB\mk_allocator_heap.sbr \
 	.\DebugIB\mk_allocator_global.sbr \
-	.\DebugIB\mk_allocator.sbr
+	.\DebugIB\mk_allocator.sbr \
+	.\DebugIB\mk_allocator_process_heap.sbr
 
 $(OUTDIR)/SampleC.bsc : $(OUTDIR)  $(BSC32_SBRS)
     $(BSC32) @<<
@@ -171,7 +172,8 @@ LINK32_OBJS= \
 	$(INTDIR)/mk_allocator_heap_mt.obj \
 	$(INTDIR)/mk_allocator_heap.obj \
 	$(INTDIR)/mk_allocator_global.obj \
-	$(INTDIR)/mk_allocator.obj
+	$(INTDIR)/mk_allocator.obj \
+	$(INTDIR)/mk_allocator_process_heap.obj
 
 $(OUTDIR)/SampleC.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -841,6 +843,34 @@ DEP_MK_ALLOC=\
 !ELSEIF  "$(CFG)" == "Win32 Debug"
 
 $(INTDIR)/mk_allocator.obj :  $(SOURCE)  $(DEP_MK_ALLOC) $(INTDIR)
+   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
+ /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
+  $(SOURCE) 
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.c
+DEP_MK_ALLOCA=\
+	\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.h\
+	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
+	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
+	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
+	\dev\projekty\SampleC\SampleC\src\mk_types.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h
+
+!IF  "$(CFG)" == "Win32 Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "Win32 Debug"
+
+$(INTDIR)/mk_allocator_process_heap.obj :  $(SOURCE)  $(DEP_MK_ALLOCA)\
+ $(INTDIR)
    $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
  /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
   $(SOURCE) 

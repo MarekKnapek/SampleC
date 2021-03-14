@@ -9,6 +9,7 @@ enum mk_allocator_id_e
 {
 	mk_allocator_id_heap,
 	mk_allocator_id_heap_mt,
+	mk_allocator_id_process_heap,
 };
 typedef enum mk_allocator_id_e mk_allocator_id_t;
 
