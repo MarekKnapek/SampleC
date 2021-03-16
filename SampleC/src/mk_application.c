@@ -8,6 +8,16 @@
 #include "mk_win_user.h"
 
 
+#define MK_T1 mk_uint32_t
+#define MK_T2 2000
+#define MK_T3 250
+#define MK_T4 1000
+#include "mk_counter_template.c"
+#undef MK_T3
+#undef MK_T2
+#undef MK_T1
+
+
 static mk_application_t* mk_application_g_application;
 
 
@@ -29,7 +39,7 @@ void __stdcall mk_application_timer_proc(mk_win_user_hwnd_t const hwnd, mk_win_u
 	char* end;
 
 	curr_time = mk_win_kernel_get_tick_count();
-	msgs_per_second = mk_counter_get_count(&mk_application_g_application->m_counter, curr_time.m_value);
+	msgs_per_second = mk_counter_mk_uint32_t_2000_250_1000_get_count(&mk_application_g_application->m_counter, curr_time.m_value);
 	end = mk_to_chars_uint32(buffer, buffer + 12, msgs_per_second);
 	end[0] = '\x0D';
 	end[1] = '\x0A';
@@ -46,12 +56,12 @@ void mk_application_construct(mk_application_t* const self, mk_win_instance_t co
 	self->m_cmd_show = cmd_show;
 	mk_task_queue_construct(&self->m_idle_tasks);
 	self->m_main_window = MK_NULL;
-	mk_counter_construct(&self->m_counter, 2000, 250);
+	mk_counter_mk_uint32_t_2000_250_1000_construct(&self->m_counter);
 }
 
 void mk_application_destroy(mk_application_t* const self)
 {
-	mk_counter_destroy(&self->m_counter);
+	mk_counter_mk_uint32_t_2000_250_1000_destroy(&self->m_counter);
 	mk_task_queue_destroy(&self->m_idle_tasks);
 }
 
@@ -133,7 +143,7 @@ int mk_application_run_message_loop(mk_application_t* const self)
 			}
 			translate:
 			curr_time = mk_win_kernel_get_tick_count();
-			mk_counter_count(&self->m_counter, curr_time.m_value, 1);
+			mk_counter_mk_uint32_t_2000_250_1000_count(&self->m_counter, curr_time.m_value, 1);
 			translated = mk_win_user_translate_message(&msg);
 			dispatched = mk_win_user_dispatch_message(&msg);
 		}

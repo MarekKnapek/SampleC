@@ -2,10 +2,20 @@
 #define INCLUDE_GUARD_MK_APPLICATION
 
 
-#include "mk_counter.h"
 #include "mk_main_window.h"
 #include "mk_task_queue.h"
 #include "mk_windows.h"
+
+
+#define MK_T1 mk_uint32_t
+#define MK_T2 2000
+#define MK_T3 250
+#define MK_T4 1000
+#include "mk_counter_template.h"
+#undef MK_T3
+#undef MK_T2
+#undef MK_T1
+
 
 
 struct mk_application_s
@@ -15,7 +25,7 @@ struct mk_application_s
 	int m_cmd_show;
 	mk_task_queue_t m_idle_tasks;
 	mk_main_window_t* m_main_window;
-	mk_counter_t m_counter;
+	mk_counter_mk_uint32_t_2000_250_1000_t m_counter;
 };
 typedef struct mk_application_s mk_application_t;
 

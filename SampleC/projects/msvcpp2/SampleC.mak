@@ -139,8 +139,7 @@ BSC32_SBRS= \
 	.\DebugIB\mk_allocator_heap.sbr \
 	.\DebugIB\mk_allocator_global.sbr \
 	.\DebugIB\mk_allocator.sbr \
-	.\DebugIB\mk_allocator_process_heap.sbr \
-	.\DebugIB\mk_counter.sbr
+	.\DebugIB\mk_allocator_process_heap.sbr
 
 $(OUTDIR)/SampleC.bsc : $(OUTDIR)  $(BSC32_SBRS)
     $(BSC32) @<<
@@ -174,8 +173,7 @@ LINK32_OBJS= \
 	$(INTDIR)/mk_allocator_heap.obj \
 	$(INTDIR)/mk_allocator_global.obj \
 	$(INTDIR)/mk_allocator.obj \
-	$(INTDIR)/mk_allocator_process_heap.obj \
-	$(INTDIR)/mk_counter.obj
+	$(INTDIR)/mk_allocator_process_heap.obj
 
 $(OUTDIR)/SampleC.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -858,7 +856,7 @@ $(INTDIR)/mk_allocator.obj :  $(SOURCE)  $(DEP_MK_ALLOC) $(INTDIR)
 ################################################################################
 # Begin Source File
 
-SOURCE=\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.c
+SOURCE=..\..\src\mk_allocator_process_heap.c
 DEP_MK_ALLOCA=\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.h\
 	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
@@ -886,45 +884,7 @@ $(INTDIR)/mk_allocator_process_heap.obj :  $(SOURCE)  $(DEP_MK_ALLOCA)\
 ################################################################################
 # Begin Source File
 
-SOURCE=\dev\projekty\SampleC\SampleC\src\mk_counter.c
-DEP_MK_CO=\
-	\dev\projekty\SampleC\SampleC\src\mk_counter.h\
-	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.c\
-	\dev\projekty\SampleC\SampleC\src\mk_vector_template.c\
-	\dev\projekty\SampleC\SampleC\src\mk_ints.h\
-	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.h\
-	\dev\projekty\SampleC\SampleC\src\mk_vector_template.h\
-	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
-	\dev\projekty\SampleC\SampleC\src\mk_mem.h\
-	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
-	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
-	\dev\projekty\SampleC\SampleC\src\mk_allocator_global.h\
-	\dev\projekty\SampleC\SampleC\src\mk_types.h\
-	\dev\projekty\SampleC\SampleC\src\mk_allocator.h
-
-!IF  "$(CFG)" == "Win32 Release"
-
-# PROP Exclude_From_Build 1
-
-!ELSEIF  "$(CFG)" == "Win32 Debug"
-
-$(INTDIR)/mk_counter.obj :  $(SOURCE)  $(DEP_MK_CO) $(INTDIR)
-   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
- /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
-  $(SOURCE) 
-
-!ENDIF 
-
-# End Source File
-################################################################################
-# Begin Source File
-
 SOURCE=\dev\projekty\SampleC\SampleC\src\mk_ints.h
-# End Source File
-################################################################################
-# Begin Source File
-
-SOURCE=\dev\projekty\SampleC\SampleC\src\mk_counter.h
 # End Source File
 ################################################################################
 # Begin Source File

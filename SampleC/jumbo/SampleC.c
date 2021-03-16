@@ -6,7 +6,6 @@
 #include "../src/mk_application.c"
 #include "../src/mk_charconv.c"
 #include "../src/mk_check_ret.c"
-#include "../src/mk_counter.c"
 #include "../src/mk_lock_critical_section.c"
 #include "../src/mk_main.c"
 #include "../src/mk_main_window.c"

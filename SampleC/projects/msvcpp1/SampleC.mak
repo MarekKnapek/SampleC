@@ -65,8 +65,7 @@ SBRS = MK_ALLOCATOR_HEAP.SBR \
 		MK_ALLOCATOR_HEAP_MT.SBR \
 		MK_MEM.SBR \
 		MK_TASK_QUEUE.SBR \
-		MK_ALLOCATOR_PROCESS_HEAP.SBR \
-		MK_COUNTER.SBR
+		MK_ALLOCATOR_PROCESS_HEAP.SBR
 
 
 MK_ALLOCATOR_HEAP_DEP =  \
@@ -80,21 +79,22 @@ MK_ALLOCATOR_HEAP_DEP =  \
 
 MK_APPLICATION_DEP =  \
 	c:\dev\projekty\samplec\samplec\src\mk_application.h \
-	c:\dev\projekty\samplec\samplec\src\mk_counter.h \
-	c:\dev\projekty\samplec\samplec\src\mk_ints.h \
-	c:\dev\projekty\samplec\samplec\src\mk_primitives_template.h \
-	c:\dev\projekty\samplec\samplec\src\mk_macros.h \
-	c:\dev\projekty\samplec\samplec\src\mk_vector_template.h \
-	c:\dev\projekty\samplec\samplec\src\mk_types.h \
 	c:\dev\projekty\samplec\samplec\src\mk_main_window.h \
 	c:\dev\projekty\samplec\samplec\src\mk_win_user.h \
+	c:\dev\projekty\samplec\samplec\src\mk_types.h \
+	c:\dev\projekty\samplec\samplec\src\mk_macros.h \
 	c:\dev\projekty\samplec\samplec\src\mk_windows.h \
 	c:\dev\projekty\samplec\samplec\src\mk_task_queue.h \
 	c:\dev\projekty\samplec\samplec\src\mk_lock_critical_section.h \
 	c:\dev\projekty\samplec\samplec\src\mk_win_kernel.h \
+	c:\dev\projekty\samplec\samplec\src\mk_primitives_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_vector_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_counter_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_ints.h \
 	c:\dev\projekty\samplec\samplec\src\mk_assert.h \
 	c:\dev\projekty\samplec\samplec\src\mk_charconv.h \
-	c:\dev\projekty\samplec\samplec\src\mk_check_ret.h
+	c:\dev\projekty\samplec\samplec\src\mk_check_ret.h \
+	c:\dev\projekty\samplec\samplec\src\mk_counter_template.c
 
 
 MK_CHARCONV_DEP =  \
@@ -127,16 +127,16 @@ MK_MAIN_DEP =  \
 	c:\dev\projekty\samplec\samplec\src\mk_macros.h \
 	c:\dev\projekty\samplec\samplec\src\mk_allocator.h \
 	c:\dev\projekty\samplec\samplec\src\mk_application.h \
-	c:\dev\projekty\samplec\samplec\src\mk_counter.h \
-	c:\dev\projekty\samplec\samplec\src\mk_ints.h \
-	c:\dev\projekty\samplec\samplec\src\mk_primitives_template.h \
-	c:\dev\projekty\samplec\samplec\src\mk_vector_template.h \
 	c:\dev\projekty\samplec\samplec\src\mk_main_window.h \
 	c:\dev\projekty\samplec\samplec\src\mk_win_user.h \
 	c:\dev\projekty\samplec\samplec\src\mk_windows.h \
 	c:\dev\projekty\samplec\samplec\src\mk_task_queue.h \
 	c:\dev\projekty\samplec\samplec\src\mk_lock_critical_section.h \
-	c:\dev\projekty\samplec\samplec\src\mk_win_kernel.h
+	c:\dev\projekty\samplec\samplec\src\mk_win_kernel.h \
+	c:\dev\projekty\samplec\samplec\src\mk_primitives_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_vector_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_counter_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_ints.h
 
 
 MK_MAIN_WINDOW_DEP =  \
@@ -147,13 +147,13 @@ MK_MAIN_WINDOW_DEP =  \
 	c:\dev\projekty\samplec\samplec\src\mk_windows.h \
 	c:\dev\projekty\samplec\samplec\src\mk_assert.h \
 	c:\dev\projekty\samplec\samplec\src\mk_application.h \
-	c:\dev\projekty\samplec\samplec\src\mk_counter.h \
-	c:\dev\projekty\samplec\samplec\src\mk_ints.h \
-	c:\dev\projekty\samplec\samplec\src\mk_primitives_template.h \
-	c:\dev\projekty\samplec\samplec\src\mk_vector_template.h \
 	c:\dev\projekty\samplec\samplec\src\mk_task_queue.h \
 	c:\dev\projekty\samplec\samplec\src\mk_lock_critical_section.h \
 	c:\dev\projekty\samplec\samplec\src\mk_win_kernel.h \
+	c:\dev\projekty\samplec\samplec\src\mk_primitives_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_vector_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_counter_template.h \
+	c:\dev\projekty\samplec\samplec\src\mk_ints.h \
 	c:\dev\projekty\samplec\samplec\src\mk_check_ret.h
 
 
@@ -264,22 +264,6 @@ MK_ALLOCATOR_PROCESS_HEAP_DEP =  \
 	c:\dev\projekty\samplec\samplec\src\mk_assert.h
 
 
-MK_COUNTER_DEP =  \
-	c:\dev\projekty\samplec\samplec\src\mk_counter.h \
-	c:\dev\projekty\samplec\samplec\src\mk_ints.h \
-	c:\dev\projekty\samplec\samplec\src\mk_primitives_template.h \
-	c:\dev\projekty\samplec\samplec\src\mk_macros.h \
-	c:\dev\projekty\samplec\samplec\src\mk_vector_template.h \
-	c:\dev\projekty\samplec\samplec\src\mk_types.h \
-	c:\dev\projekty\samplec\samplec\src\mk_primitives_template.c \
-	c:\dev\projekty\samplec\samplec\src\mk_mem.h \
-	c:\dev\projekty\samplec\samplec\src\mk_vector_template.c \
-	c:\dev\projekty\samplec\samplec\src\mk_assert.h \
-	c:\dev\projekty\samplec\samplec\src\mk_check_ret.h \
-	c:\dev\projekty\samplec\samplec\src\mk_allocator_global.h \
-	c:\dev\projekty\samplec\samplec\src\mk_allocator.h
-
-
 all:	$(PROJ).EXE $(PROJ).BSC
 
 MK_ALLOCATOR_HEAP.OBJ:	..\..\SRC\MK_ALLOCATOR_HEAP.C $(MK_ALLOCATOR_HEAP_DEP)
@@ -336,15 +320,11 @@ MK_TASK_QUEUE.OBJ:	..\..\SRC\MK_TASK_QUEUE.C $(MK_TASK_QUEUE_DEP)
 MK_ALLOCATOR_PROCESS_HEAP.OBJ:	..\..\SRC\MK_ALLOCATOR_PROCESS_HEAP.C $(MK_ALLOCATOR_PROCESS_HEAP_DEP)
 	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c ..\..\SRC\MK_ALLOCATOR_PROCESS_HEAP.C
 
-MK_COUNTER.OBJ:	..\..\SRC\MK_COUNTER.C $(MK_COUNTER_DEP)
-	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c ..\..\SRC\MK_COUNTER.C
-
 
 $(PROJ).EXE:	MK_ALLOCATOR_HEAP.OBJ MK_APPLICATION.OBJ MK_CHARCONV.OBJ MK_CHECK_RET.OBJ \
 	MK_LOCK_CRITICAL_SECTION.OBJ MK_MAIN.OBJ MK_MAIN_WINDOW.OBJ MK_PRIMITIVES_INSTANTIATION.OBJ \
 	MK_TYPES.OBJ MK_VECTOR_INSTANTIATION.OBJ MK_WIN_KERNEL.OBJ MK_WIN_USER.OBJ MK_ALLOCATOR_GLOBAL.OBJ \
-	MK_ALLOCATOR.OBJ MK_ALLOCATOR_HEAP_MT.OBJ MK_MEM.OBJ MK_TASK_QUEUE.OBJ MK_ALLOCATOR_PROCESS_HEAP.OBJ \
-	MK_COUNTER.OBJ $(OBJS_EXT) $(LIBS_EXT)
+	MK_ALLOCATOR.OBJ MK_ALLOCATOR_HEAP_MT.OBJ MK_MEM.OBJ MK_TASK_QUEUE.OBJ MK_ALLOCATOR_PROCESS_HEAP.OBJ $(OBJS_EXT) $(LIBS_EXT)
 	echo >NUL @<<$(PROJ).CRF
 MK_ALLOCATOR_HEAP.OBJ 
 MK_APPLICATION.OBJ 
@@ -364,7 +344,6 @@ MK_ALLOCATOR_HEAP_MT.OBJ
 MK_MEM.OBJ 
 MK_TASK_QUEUE.OBJ 
 MK_ALLOCATOR_PROCESS_HEAP.OBJ 
-MK_COUNTER.OBJ 
 $(OBJS_EXT)
 -OUT:$(PROJ).EXE
 $(MAPFILE_OPTION)
