@@ -1,9 +1,26 @@
-void MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _construct)(MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _t)* const self)
+#include "mk_math.h"
+
+
+#ifndef MK_T_TYPE
+# error Bad template!
+#endif
+#ifndef MK_T_DURATION
+# error Bad template!
+#endif
+#ifndef MK_T_PRECISION
+# error Bad template!
+#endif
+#ifndef MK_T_UNIT
+# error Bad template!
+#endif
+
+
+void MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _construct)(MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _t)* const self)
 {
 	mk_uint32_t i;
-	MK_CONCAT3(mk_counter_bucket_, MK_T1, _t)* bucket;
+	MK_CONCAT3(mk_counter_bucket_, MK_T_TYPE, _t)* bucket;
 
-	for(i = 0; i != MK_T2 / MK_T3 + 1; ++i)
+	for(i = 0; i != MK_T_DURATION / MK_T_PRECISION + 1; ++i)
 	{
 		bucket = self->m_buckets + i;
 		bucket->m_time = 0;
@@ -12,17 +29,17 @@ void MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _construct)(MK
 	self->m_index = 0;
 }
 
-void MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _destroy)(MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _t)* const self)
+void MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _destroy)(MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _t)* const self)
 {
 }
 
 
-void MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _count)(MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _t)* const self, MK_T1 const time, MK_T1 const count)
+void MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _count)(MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _t)* const self, MK_T_TYPE const time, MK_T_TYPE const count)
 {
-	MK_T1 time_rounded;
-	MK_CONCAT3(mk_counter_bucket_, MK_T1, _t)* bucket;
+	MK_T_TYPE time_rounded;
+	MK_CONCAT3(mk_counter_bucket_, MK_T_TYPE, _t)* bucket;
 
-	time_rounded = time / MK_T3;
+	time_rounded = time / MK_T_PRECISION;
 	bucket = self->m_buckets + self->m_index;
 	if(bucket->m_time == time_rounded)
 	{
@@ -30,13 +47,13 @@ void MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _count)(MK_CON
 	}
 	else
 	{
-		if(self->m_index == MK_T2 / MK_T3)
+		if(self->m_index != MK_T_DURATION / MK_T_PRECISION + 1 - 1)
 		{
-			self->m_index = 0;
+			++self->m_index;
 		}
 		else
 		{
-			++self->m_index;
+			self->m_index = 0;
 		}
 		bucket = self->m_buckets + self->m_index;
 		bucket->m_time = time_rounded;
@@ -45,41 +62,41 @@ void MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _count)(MK_CON
 }
 
 
-MK_T1 MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _get_count)(MK_CONCAT9(mk_counter_, MK_T1, _, MK_T2, _, MK_T3, _, MK_T4, _t) const* const self, MK_T1 const time)
+MK_T_TYPE MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _get_count)(MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _t) const* const self, MK_T_TYPE const time)
 {
-	mk_uint32_t count;
-	mk_uint32_t time_rounded;
+	MK_T_TYPE count;
+	MK_T_TYPE time_rounded;
 	mk_uint32_t idx;
 	mk_uint32_t i;
-	MK_CONCAT3(mk_counter_bucket_, MK_T1, _t) const* bucket;
-	mk_uint32_t diff;
-	mk_uint32_t average;
+	MK_CONCAT3(mk_counter_bucket_, MK_T_TYPE, _t) const* bucket;
+	MK_T_TYPE diff;
+	MK_T_TYPE unit_reduced;
+	MK_T_TYPE duration_reduced;
+	MK_T_TYPE ret;
 
 	count = 0;
-	time_rounded = time / MK_T3;
+	time_rounded = time / MK_T_PRECISION;
 	idx = self->m_index;
-	for(i = 0; i != MK_T2 / MK_T3; ++i)
+	for(i = 0; i != MK_T_DURATION / MK_T_PRECISION + 1 - 1; ++i)
 	{
-		if(idx == 0)
-		{
-			idx = MK_T2 / MK_T3;
-		}
-		else
+		if(idx != 0)
 		{
 			--idx;
 		}
-		bucket = self->m_buckets + idx;
-		if(bucket->m_time == 0)
+		else
 		{
-			break;
+			idx = MK_T_DURATION / MK_T_PRECISION;
 		}
+		bucket = self->m_buckets + idx;
 		diff = time_rounded - bucket->m_time;
-		if(diff > MK_T2 / MK_T3)
+		if(diff > MK_T_DURATION / MK_T_PRECISION)
 		{
 			break;
 		}
 		count += bucket->m_count;
 	}
-	average = (count * MK_T4) / MK_T2;
-	return average;
+	unit_reduced = MK_REDUCE_FRACTION_A(MK_T_UNIT, MK_T_DURATION);
+	duration_reduced = MK_REDUCE_FRACTION_B(MK_T_UNIT, MK_T_DURATION);
+	ret = (count * unit_reduced) / duration_reduced;
+	return ret;
 }

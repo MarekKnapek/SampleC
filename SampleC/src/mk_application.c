@@ -8,14 +8,15 @@
 #include "mk_win_user.h"
 
 
-#define MK_T1 mk_uint32_t
-#define MK_T2 2000
-#define MK_T3 250
-#define MK_T4 1000
+#define MK_T_TYPE mk_uint32_t
+#define MK_T_DURATION 2000
+#define MK_T_PRECISION 250
+#define MK_T_UNIT 1000
 #include "mk_counter_template.c"
-#undef MK_T3
-#undef MK_T2
-#undef MK_T1
+#undef MK_T_UNIT
+#undef MK_T_PRECISION
+#undef MK_T_DURATION
+#undef MK_T_TYPE
 
 
 static mk_application_t* mk_application_g_application;
