@@ -18,4 +18,8 @@
 #define MK_GCD_IMPL_9(A, B) ((mk_crash(), 0))
 
 
+#define MK_REDUCE_FRACTION_A(A, B) ((A) / (MK_GCD((A), (B))))
+#define MK_REDUCE_FRACTION_B(A, B) ((B) / (MK_GCD((A), (B))))
+
+
 #endif
