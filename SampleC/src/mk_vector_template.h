@@ -2,35 +2,35 @@
 #include "mk_macros.h"
 
 
-struct MK_CONCAT3(mk_vector_, X, _s)
+struct MK_CONCAT3(mk_vector, X, s)
 {
 	X* m_array;
 	mk_size_t m_size;
 	mk_size_t m_capacity;
 };
-typedef struct MK_CONCAT3(mk_vector_, X, _s) MK_CONCAT3(mk_vector_, X, _t);
+typedef struct MK_CONCAT3(mk_vector, X, s) MK_CONCAT3(mk_vector, X, t);
 
 
-void MK_CONCAT3(mk_vector_, X, _construct)(MK_CONCAT3(mk_vector_, X, _t)* const self);
-void MK_CONCAT3(mk_vector_, X, _move_construct)(MK_CONCAT3(mk_vector_, X, _t)* const self, MK_CONCAT3(mk_vector_, X, _t)* const other);
-void MK_CONCAT3(mk_vector_, X, _move_assign)(MK_CONCAT3(mk_vector_, X, _t)* const self, MK_CONCAT3(mk_vector_, X, _t)* const other);
-void MK_CONCAT3(mk_vector_, X, _swap)(MK_CONCAT3(mk_vector_, X, _t)* const self, MK_CONCAT3(mk_vector_, X, _t)* const other);
-void MK_CONCAT3(mk_vector_, X, _destroy)(MK_CONCAT3(mk_vector_, X, _t)* const self);
+void MK_CONCAT3(mk_vector, X, construct)(MK_CONCAT3(mk_vector, X, t)* const self);
+void MK_CONCAT3(mk_vector, X, move_construct)(MK_CONCAT3(mk_vector, X, t)* const self, MK_CONCAT3(mk_vector, X, t)* const other);
+void MK_CONCAT3(mk_vector, X, move_assign)(MK_CONCAT3(mk_vector, X, t)* const self, MK_CONCAT3(mk_vector, X, t)* const other);
+void MK_CONCAT3(mk_vector, X, swap)(MK_CONCAT3(mk_vector, X, t)* const self, MK_CONCAT3(mk_vector, X, t)* const other);
+void MK_CONCAT3(mk_vector, X, destroy)(MK_CONCAT3(mk_vector, X, t)* const self);
 
-mk_size_t MK_CONCAT3(mk_vector_, X, _size)(MK_CONCAT3(mk_vector_, X, _t) const* const self);
-mk_size_t MK_CONCAT3(mk_vector_, X, _capacity)(MK_CONCAT3(mk_vector_, X, _t) const* const self);
-mk_bool_t MK_CONCAT3(mk_vector_, X, _is_empty)(MK_CONCAT3(mk_vector_, X, _t) const* const self);
-mk_bool_t MK_CONCAT3(mk_vector_, X, _is_full)(MK_CONCAT3(mk_vector_, X, _t) const* const self);
-mk_size_t MK_CONCAT3(mk_vector_, X, _space)(MK_CONCAT3(mk_vector_, X, _t) const* const self);
-X const* MK_CONCAT3(mk_vector_, X, _cat)(MK_CONCAT3(mk_vector_, X, _t) const* const self, mk_size_t const idx);
-X const* MK_CONCAT3(mk_vector_, X, _cbegin)(MK_CONCAT3(mk_vector_, X, _t) const* const self);
-X const* MK_CONCAT3(mk_vector_, X, _cend)(MK_CONCAT3(mk_vector_, X, _t) const* const self);
+mk_size_t MK_CONCAT3(mk_vector, X, size)(MK_CONCAT3(mk_vector, X, t) const* const self);
+mk_size_t MK_CONCAT3(mk_vector, X, capacity)(MK_CONCAT3(mk_vector, X, t) const* const self);
+mk_bool_t MK_CONCAT3(mk_vector, X, is_empty)(MK_CONCAT3(mk_vector, X, t) const* const self);
+mk_bool_t MK_CONCAT3(mk_vector, X, is_full)(MK_CONCAT3(mk_vector, X, t) const* const self);
+mk_size_t MK_CONCAT3(mk_vector, X, space)(MK_CONCAT3(mk_vector, X, t) const* const self);
+X const* MK_CONCAT3(mk_vector, X, cat)(MK_CONCAT3(mk_vector, X, t) const* const self, mk_size_t const idx);
+X const* MK_CONCAT3(mk_vector, X, cbegin)(MK_CONCAT3(mk_vector, X, t) const* const self);
+X const* MK_CONCAT3(mk_vector, X, cend)(MK_CONCAT3(mk_vector, X, t) const* const self);
 
-X* MK_CONCAT3(mk_vector_, X, _at)(MK_CONCAT3(mk_vector_, X, _t)* const self, mk_size_t const idx);
-X* MK_CONCAT3(mk_vector_, X, _begin)(MK_CONCAT3(mk_vector_, X, _t)* const self);
-X* MK_CONCAT3(mk_vector_, X, _end)(MK_CONCAT3(mk_vector_, X, _t)* const self);
-void MK_CONCAT3(mk_vector_, X, _reserve)(MK_CONCAT3(mk_vector_, X, _t)* const self, mk_size_t const size);
-void MK_CONCAT3(mk_vector_, X, _resize)(MK_CONCAT3(mk_vector_, X, _t)* const self, mk_size_t const size);
-X* MK_CONCAT3(mk_vector_, X, _push_back)(MK_CONCAT3(mk_vector_, X, _t)* const self, X const* const value);
-void MK_CONCAT3(mk_vector_, X, _pop_back)(MK_CONCAT3(mk_vector_, X, _t)* const self);
-void MK_CONCAT3(mk_vector_, X, _clear)(MK_CONCAT3(mk_vector_, X, _t)* const self);
+X* MK_CONCAT3(mk_vector, X, at)(MK_CONCAT3(mk_vector, X, t)* const self, mk_size_t const idx);
+X* MK_CONCAT3(mk_vector, X, begin)(MK_CONCAT3(mk_vector, X, t)* const self);
+X* MK_CONCAT3(mk_vector, X, end)(MK_CONCAT3(mk_vector, X, t)* const self);
+void MK_CONCAT3(mk_vector, X, reserve)(MK_CONCAT3(mk_vector, X, t)* const self, mk_size_t const size);
+void MK_CONCAT3(mk_vector, X, resize)(MK_CONCAT3(mk_vector, X, t)* const self, mk_size_t const size);
+X* MK_CONCAT3(mk_vector, X, push_back)(MK_CONCAT3(mk_vector, X, t)* const self, X const* const value);
+void MK_CONCAT3(mk_vector, X, pop_back)(MK_CONCAT3(mk_vector, X, t)* const self);
+void MK_CONCAT3(mk_vector, X, clear)(MK_CONCAT3(mk_vector, X, t)* const self);

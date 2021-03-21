@@ -20,7 +20,7 @@
 #define MK_UNREFERENCED(X) (X) = (X)
 #define MK_STATIC_ASSERT(X) { char arr[(X) ? 1 : 0]; (void)arr; }
 
-#define MK_PASTE(A, B) A ## B
+#define MK_PASTE(A, B) A ## _ ## B
 #define MK_CONCAT(A, B) MK_PASTE(A, B)
 #define MK_CONCAT3(A, B, C) MK_CONCAT(A, MK_PASTE(B, C))
 #define MK_CONCAT4(A, B, C, D) MK_CONCAT(A, MK_CONCAT(B, MK_PASTE(C, D)))

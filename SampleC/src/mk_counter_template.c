@@ -15,10 +15,10 @@
 #endif
 
 
-void MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _construct)(MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _t)* const self)
+void MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, construct)(MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, t)* const self)
 {
 	mk_uint32_t i;
-	MK_CONCAT3(mk_counter_bucket_, MK_T_TYPE, _t)* bucket;
+	MK_CONCAT3(mk_counter_bucket, MK_T_TYPE, t)* bucket;
 
 	for(i = 0; i != MK_T_DURATION / MK_T_PRECISION + 1; ++i)
 	{
@@ -29,15 +29,15 @@ void MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, 
 	self->m_index = 0;
 }
 
-void MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _destroy)(MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _t)* const self)
+void MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, destroy)(MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, t)* const self)
 {
 }
 
 
-void MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _count)(MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _t)* const self, MK_T_TYPE const time, MK_T_TYPE const count)
+void MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, count)(MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, t)* const self, MK_T_TYPE const time, MK_T_TYPE const count)
 {
 	MK_T_TYPE time_rounded;
-	MK_CONCAT3(mk_counter_bucket_, MK_T_TYPE, _t)* bucket;
+	MK_CONCAT3(mk_counter_bucket, MK_T_TYPE, t)* bucket;
 
 	time_rounded = time / MK_T_PRECISION;
 	bucket = self->m_buckets + self->m_index;
@@ -62,13 +62,13 @@ void MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, 
 }
 
 
-MK_T_TYPE MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _get_count)(MK_CONCAT9(mk_counter_, MK_T_TYPE, _, MK_T_DURATION, _, MK_T_PRECISION, _, MK_T_UNIT, _t) const* const self, MK_T_TYPE const time)
+MK_T_TYPE MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, get_count)(MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, t) const* const self, MK_T_TYPE const time)
 {
 	MK_T_TYPE count;
 	MK_T_TYPE time_rounded;
 	mk_uint32_t idx;
 	mk_uint32_t i;
-	MK_CONCAT3(mk_counter_bucket_, MK_T_TYPE, _t) const* bucket;
+	MK_CONCAT3(mk_counter_bucket, MK_T_TYPE, t) const* bucket;
 	MK_T_TYPE diff;
 	MK_T_TYPE unit_reduced;
 	MK_T_TYPE duration_reduced;
