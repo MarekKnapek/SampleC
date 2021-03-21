@@ -35,7 +35,7 @@ enum mk_win_kernel_heap_size_e
 {
 	mk_win_kernel_heap_size_no_serialize          = 0x00000001,
 };
-typedef enum mk_win_kernel_size_realloc_e mk_win_kernel_heap_size_t;
+typedef enum mk_win_kernel_heap_size_e mk_win_kernel_heap_size_t;
 
 enum mk_win_kernel_heap_free_e
 {

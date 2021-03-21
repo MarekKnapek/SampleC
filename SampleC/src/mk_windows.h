@@ -2,7 +2,7 @@
 #define INCLUDE_GUARD_MK_WINDOWS
 
 
-struct mk_win_widechar_t { unsigned short int m_value; }; typedef struct mk_win_widechar_s mk_win_widechar_t;
+struct mk_win_widechar_s { unsigned short int m_value; }; typedef struct mk_win_widechar_s mk_win_widechar_t;
 struct mk_win_word_s     { unsigned short int m_value; }; typedef struct mk_win_word_s     mk_win_word_t;
 
 struct mk_win_uint_s  { unsigned int m_value; }; typedef struct mk_win_uint_s  mk_win_uint_t;

@@ -1,23 +1,25 @@
 #include "mk_win_kernel.h"
 
+#include "mk_macros.h"
 
-extern __declspec(dllimport) void __stdcall DebugBreak(void);
-extern __declspec(dllimport) mk_win_handle_t __stdcall GetCurrentProcess(void);
-extern __declspec(dllimport) mk_win_dword_t __stdcall GetCurrentThreadId(void);
-extern __declspec(dllimport) mk_bool_t __stdcall TerminateProcess(mk_win_handle_t, mk_win_uint_t);
-extern __declspec(dllimport) void __stdcall InitializeCriticalSection(mk_win_kernel_critical_section_t*);
-extern __declspec(dllimport) void __stdcall EnterCriticalSection(mk_win_kernel_critical_section_t*);
-extern __declspec(dllimport) void __stdcall LeaveCriticalSection(mk_win_kernel_critical_section_t*);
-extern __declspec(dllimport) void __stdcall DeleteCriticalSection(mk_win_kernel_critical_section_t*);
-extern __declspec(dllimport) mk_win_handle_t __stdcall GetProcessHeap(void);
-extern __declspec(dllimport) mk_win_handle_t __stdcall HeapCreate(mk_win_dword_t, mk_size_t, mk_size_t);
-extern __declspec(dllimport) void* __stdcall HeapAlloc(mk_win_handle_t, mk_win_dword_t, mk_size_t);
-extern __declspec(dllimport) void* __stdcall HeapReAlloc(mk_win_handle_t, mk_win_dword_t, void*, mk_size_t);
-extern __declspec(dllimport) mk_size_t __stdcall HeapSize(mk_win_handle_t, mk_win_dword_t, void*);
-extern __declspec(dllimport) mk_win_bool_t __stdcall HeapFree(mk_win_handle_t, mk_win_dword_t, void*);
-extern __declspec(dllimport) mk_win_bool_t __stdcall HeapDestroy(mk_win_handle_t);
-extern __declspec(dllimport) mk_win_dword_t __stdcall GetTickCount(void);
-extern __declspec(dllimport) void __stdcall OutputDebugStringA(char const*);
+
+extern MK_C __declspec(dllimport) void __stdcall DebugBreak(void);
+extern MK_C __declspec(dllimport) mk_win_handle_t __stdcall GetCurrentProcess(void);
+extern MK_C __declspec(dllimport) mk_win_dword_t __stdcall GetCurrentThreadId(void);
+extern MK_C __declspec(dllimport) mk_bool_t __stdcall TerminateProcess(mk_win_handle_t, mk_win_uint_t);
+extern MK_C __declspec(dllimport) void __stdcall InitializeCriticalSection(mk_win_kernel_critical_section_t*);
+extern MK_C __declspec(dllimport) void __stdcall EnterCriticalSection(mk_win_kernel_critical_section_t*);
+extern MK_C __declspec(dllimport) void __stdcall LeaveCriticalSection(mk_win_kernel_critical_section_t*);
+extern MK_C __declspec(dllimport) void __stdcall DeleteCriticalSection(mk_win_kernel_critical_section_t*);
+extern MK_C __declspec(dllimport) mk_win_handle_t __stdcall GetProcessHeap(void);
+extern MK_C __declspec(dllimport) mk_win_handle_t __stdcall HeapCreate(mk_win_dword_t, mk_size_t, mk_size_t);
+extern MK_C __declspec(dllimport) void* __stdcall HeapAlloc(mk_win_handle_t, mk_win_dword_t, mk_size_t);
+extern MK_C __declspec(dllimport) void* __stdcall HeapReAlloc(mk_win_handle_t, mk_win_dword_t, void*, mk_size_t);
+extern MK_C __declspec(dllimport) mk_size_t __stdcall HeapSize(mk_win_handle_t, mk_win_dword_t, void*);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall HeapFree(mk_win_handle_t, mk_win_dword_t, void*);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall HeapDestroy(mk_win_handle_t);
+extern MK_C __declspec(dllimport) mk_win_dword_t __stdcall GetTickCount(void);
+extern MK_C __declspec(dllimport) void __stdcall OutputDebugStringA(char const*);
 
 
 void mk_win_kernel_debug_break(void)

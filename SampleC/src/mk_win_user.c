@@ -1,33 +1,34 @@
 #include "mk_win_user.h"
 
 #include "mk_assert.h"
+#include "mk_macros.h"
 
 
-extern __declspec(dllimport) mk_win_user_icon_t __stdcall LoadIconW(mk_win_instance_t, mk_win_widechar_t const*);
-extern __declspec(dllimport) mk_win_user_cursor_t __stdcall LoadCursorW(mk_win_instance_t, mk_win_widechar_t const*);
-extern __declspec(dllimport) mk_win_user_atom_t __stdcall RegisterClassW(mk_win_user_class_t const*);
-extern __declspec(dllimport) mk_win_bool_t __stdcall UnregisterClassW(mk_win_widechar_t const*, mk_win_instance_t);
-extern __declspec(dllimport) mk_win_user_hwnd_t __stdcall CreateWindowExW(mk_win_dword_t, mk_win_widechar_t const*, mk_win_widechar_t const*, mk_win_dword_t, int, int, int, int, mk_win_user_hwnd_t, mk_win_user_menu_t, mk_win_instance_t, void*);
-extern __declspec(dllimport) mk_win_bool_t __stdcall ShowWindow(mk_win_user_hwnd_t, int);
-extern __declspec(dllimport) mk_win_bool_t __stdcall PeekMessageW(mk_win_user_msg_t*, mk_win_user_hwnd_t, mk_win_uint_t, mk_win_uint_t, mk_win_uint_t);
-extern __declspec(dllimport) mk_win_bool_t __stdcall TranslateMessage(mk_win_user_msg_t*);
-extern __declspec(dllimport) mk_win_user_lresult_t __stdcall DispatchMessageW(mk_win_user_msg_t*);
-extern __declspec(dllimport) mk_win_bool_t __stdcall GetMessageW(mk_win_user_msg_t*, mk_win_user_hwnd_t, mk_win_uint_t, mk_win_uint_t);
-extern __declspec(dllimport) mk_win_user_lresult_t __stdcall DefWindowProcW(mk_win_user_hwnd_t, mk_win_uint_t, mk_win_user_wparam_t, mk_win_user_lparam_t);
+extern MK_C __declspec(dllimport) mk_win_user_icon_t __stdcall LoadIconW(mk_win_instance_t, mk_win_widechar_t const*);
+extern MK_C __declspec(dllimport) mk_win_user_cursor_t __stdcall LoadCursorW(mk_win_instance_t, mk_win_widechar_t const*);
+extern MK_C __declspec(dllimport) mk_win_user_atom_t __stdcall RegisterClassW(mk_win_user_class_t const*);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall UnregisterClassW(mk_win_widechar_t const*, mk_win_instance_t);
+extern MK_C __declspec(dllimport) mk_win_user_hwnd_t __stdcall CreateWindowExW(mk_win_dword_t, mk_win_widechar_t const*, mk_win_widechar_t const*, mk_win_dword_t, int, int, int, int, mk_win_user_hwnd_t, mk_win_user_menu_t, mk_win_instance_t, void*);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall ShowWindow(mk_win_user_hwnd_t, int);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall PeekMessageW(mk_win_user_msg_t*, mk_win_user_hwnd_t, mk_win_uint_t, mk_win_uint_t, mk_win_uint_t);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall TranslateMessage(mk_win_user_msg_t*);
+extern MK_C __declspec(dllimport) mk_win_user_lresult_t __stdcall DispatchMessageW(mk_win_user_msg_t*);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall GetMessageW(mk_win_user_msg_t*, mk_win_user_hwnd_t, mk_win_uint_t, mk_win_uint_t);
+extern MK_C __declspec(dllimport) mk_win_user_lresult_t __stdcall DefWindowProcW(mk_win_user_hwnd_t, mk_win_uint_t, mk_win_user_wparam_t, mk_win_user_lparam_t);
 #if MK_ARCHITECTURE == MK_ARCHITECTURE_I386
-extern __declspec(dllimport) mk_size_t __stdcall GetWindowLongW(mk_win_user_hwnd_t, int);
-extern __declspec(dllimport) mk_size_t __stdcall SetWindowLongW(mk_win_user_hwnd_t, int, mk_size_t);
+extern MK_C __declspec(dllimport) mk_size_t __stdcall GetWindowLongW(mk_win_user_hwnd_t, int);
+extern MK_C __declspec(dllimport) mk_size_t __stdcall SetWindowLongW(mk_win_user_hwnd_t, int, mk_size_t);
 #elif MK_ARCHITECTURE == MK_ARCHITECTURE_AMD64
-extern __declspec(dllimport) mk_size_t __stdcall GetWindowLongPtrW(mk_win_user_hwnd_t, int);
-extern __declspec(dllimport) mk_size_t __stdcall SetWindowLongPtrW(mk_win_user_hwnd_t, int, mk_size_t);
+extern MK_C __declspec(dllimport) mk_size_t __stdcall GetWindowLongPtrW(mk_win_user_hwnd_t, int);
+extern MK_C __declspec(dllimport) mk_size_t __stdcall SetWindowLongPtrW(mk_win_user_hwnd_t, int, mk_size_t);
 #endif
-extern __declspec(dllimport) mk_win_bool_t __stdcall PostThreadMessageW(mk_win_dword_t, mk_win_uint_t, mk_win_user_wparam_t, mk_win_user_lparam_t);
-extern __declspec(dllimport) mk_win_bool_t __stdcall PostMessageW(mk_win_user_hwnd_t, mk_win_uint_t, mk_win_user_wparam_t, mk_win_user_lparam_t);
-extern __declspec(dllimport) void __stdcall PostQuitMessage(int);
-extern __declspec(dllimport) int __stdcall MessageBoxA(mk_win_user_hwnd_t, char const*, char const*, mk_win_uint_t);
-extern __declspec(dllimport) mk_win_bool_t __stdcall SetWindowTextW(mk_win_user_hwnd_t, mk_win_widechar_t const*);
-extern __declspec(dllimport) mk_size_t __stdcall SetTimer(mk_win_user_hwnd_t, mk_size_t, mk_win_uint_t, mk_win_user_timer_proc_t);
-extern __declspec(dllimport) mk_win_bool_t __stdcall KillTimer(mk_win_user_hwnd_t, mk_size_t);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall PostThreadMessageW(mk_win_dword_t, mk_win_uint_t, mk_win_user_wparam_t, mk_win_user_lparam_t);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall PostMessageW(mk_win_user_hwnd_t, mk_win_uint_t, mk_win_user_wparam_t, mk_win_user_lparam_t);
+extern MK_C __declspec(dllimport) void __stdcall PostQuitMessage(int);
+extern MK_C __declspec(dllimport) int __stdcall MessageBoxA(mk_win_user_hwnd_t, char const*, char const*, mk_win_uint_t);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall SetWindowTextW(mk_win_user_hwnd_t, mk_win_widechar_t const*);
+extern MK_C __declspec(dllimport) mk_size_t __stdcall SetTimer(mk_win_user_hwnd_t, mk_size_t, mk_win_uint_t, mk_win_user_timer_proc_t);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall KillTimer(mk_win_user_hwnd_t, mk_size_t);
 
 
 mk_win_user_icon_t mk_win_user_load_icon(mk_win_user_icon_id_t const icon_id)

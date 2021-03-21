@@ -88,7 +88,7 @@ int mk_application_run(mk_application_t* const self)
 	mk_main_window_register_class();
 	mk_main_window_construct(&main_window);
 	self->m_main_window = &main_window;
-	mk_win_user_show_window(mk_main_window_get_hwnd(&main_window), self->m_cmd_show);
+	mk_win_user_show_window(mk_main_window_get_hwnd(&main_window), (mk_win_user_show_window_t)self->m_cmd_show);
 	timer_id = mk_win_user_set_timer(timer_hwnd, 0, timer_elapse, timer_proc); MK_ASSERT(timer_id != 0);
 
 	exit_code = mk_application_run_message_loop(self);

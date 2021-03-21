@@ -195,7 +195,7 @@ enum mk_win_user_wm_e
 	mk_win_user_wm_destroy = 0x0002,
 	mk_win_user_wm_quit    = 0x0012,
 };
-typedef enum mk_win_user_e mk_win_user_wm_t;
+typedef enum mk_win_user_wm_e mk_win_user_wm_t;
 
 enum mk_win_user_window_long_e
 {

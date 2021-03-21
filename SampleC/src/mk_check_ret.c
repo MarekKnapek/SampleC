@@ -22,7 +22,7 @@ void mk_report(int const line)
 	hwnd.m_value = MK_NULL;
 	text = buffer;
 	caption = "Surprise, Madafaka!";
-	type = mk_win_user_mb_ok | mk_win_user_mb_iconerror;
+	type = (mk_win_user_mb_t)(mk_win_user_mb_ok | mk_win_user_mb_iconerror);
 	msg = mk_win_user_message_boxa(hwnd, text, caption, type);
 }
 

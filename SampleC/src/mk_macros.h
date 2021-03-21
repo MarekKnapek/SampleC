@@ -16,6 +16,13 @@
 #endif
 
 
+#ifdef __cplusplus
+# define MK_C "C"
+#else
+# define MK_C
+#endif
+
+
 #define MK_NULL 0
 #define MK_UNREFERENCED(X) (X) = (X)
 #define MK_STATIC_ASSERT(X) { char arr[(X) ? 1 : 0]; (void)arr; }

@@ -28,7 +28,7 @@ void* mk_allocator_heap_mt_allocate(mk_allocator_heap_mt_t* const self, mk_size_
 
 	ret = mk_win_kernel_heap_alloc(self->m_heap, mk_win_kernel_heap_alloc_generate_exceptions, len);
 	MK_ASSERT(ret);
-	*real_len = mk_win_kernel_heap_size(self->m_heap, 0, ret);
+	*real_len = mk_win_kernel_heap_size(self->m_heap, (mk_win_kernel_heap_size_t)0, ret);
 	MK_ASSERT(*real_len != (mk_size_t)-1);
 
 	return ret;
@@ -56,6 +56,6 @@ void mk_allocator_heap_mt_deallocate(mk_allocator_heap_mt_t* const self, void* c
 {
 	mk_bool_t freed;
 
-	freed = mk_win_kernel_heap_free(self->m_heap, 0, ptr);
+	freed = mk_win_kernel_heap_free(self->m_heap, (mk_win_kernel_heap_free_t)0, ptr);
 	MK_ASSERT(freed == MK_TRUE);
 }
