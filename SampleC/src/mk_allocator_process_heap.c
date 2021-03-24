@@ -17,7 +17,9 @@ void mk_allocator_process_heap_construct(mk_allocator_process_heap_t* const self
 
 void mk_allocator_process_heap_destroy(mk_allocator_process_heap_t* const self)
 {
+	MK_UNREFERENCED(self);
 }
+
 
 mk_win_handle_t mk_allocator_process_heap_get_handle(mk_allocator_process_heap_t const* const self)
 {

@@ -72,6 +72,7 @@ $(OUTDIR)/SampleC.bsc : $(OUTDIR)  $(BSC32_SBRS)
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NOLOGO /SUBSYSTEM:windows /MACHINE:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NOLOGO /SUBSYSTEM:windows /PDB:none /MACHINE:I386
+# SUBTRACT LINK32 /DEBUG
 LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib\
  advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib\
  odbccp32.lib /NOLOGO /SUBSYSTEM:windows /PDB:none /MACHINE:I386\
@@ -135,11 +136,11 @@ BSC32_SBRS= \
 	.\DebugIB\mk_check_ret.sbr \
 	.\DebugIB\mk_charconv.sbr \
 	.\DebugIB\mk_application.sbr \
+	.\DebugIB\mk_allocator_process_heap.sbr \
 	.\DebugIB\mk_allocator_heap_mt.sbr \
 	.\DebugIB\mk_allocator_heap.sbr \
 	.\DebugIB\mk_allocator_global.sbr \
-	.\DebugIB\mk_allocator.sbr \
-	.\DebugIB\mk_allocator_process_heap.sbr
+	.\DebugIB\mk_allocator.sbr
 
 $(OUTDIR)/SampleC.bsc : $(OUTDIR)  $(BSC32_SBRS)
     $(BSC32) @<<
@@ -148,7 +149,7 @@ $(OUTDIR)/SampleC.bsc : $(OUTDIR)  $(BSC32_SBRS)
 
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NOLOGO /SUBSYSTEM:windows /DEBUG /MACHINE:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NOLOGO /SUBSYSTEM:windows /INCREMENTAL:no /MAP /DEBUG /MACHINE:I386
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NOLOGO /SUBSYSTEM:windows /INCREMENTAL:no /MAP /DEBUG /MACHINE:I386 /STUB:""
 LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib\
  advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib\
  odbccp32.lib /NOLOGO /SUBSYSTEM:windows /INCREMENTAL:no\
@@ -169,11 +170,11 @@ LINK32_OBJS= \
 	$(INTDIR)/mk_check_ret.obj \
 	$(INTDIR)/mk_charconv.obj \
 	$(INTDIR)/mk_application.obj \
+	$(INTDIR)/mk_allocator_process_heap.obj \
 	$(INTDIR)/mk_allocator_heap_mt.obj \
 	$(INTDIR)/mk_allocator_heap.obj \
 	$(INTDIR)/mk_allocator_global.obj \
-	$(INTDIR)/mk_allocator.obj \
-	$(INTDIR)/mk_allocator_process_heap.obj
+	$(INTDIR)/mk_allocator.obj
 
 $(OUTDIR)/SampleC.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -272,9 +273,9 @@ SOURCE=..\..\src\mk_win_user.c
 DEP_MK_WI=\
 	\dev\projekty\SampleC\SampleC\src\mk_win_user.h\
 	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
-	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
-	\dev\projekty\SampleC\SampleC\src\mk_macros.h
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h
 
 !IF  "$(CFG)" == "Win32 Release"
 
@@ -301,9 +302,9 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h
 SOURCE=..\..\src\mk_win_kernel.c
 DEP_MK_WIN=\
 	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
-	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
-	\dev\projekty\SampleC\SampleC\src\mk_macros.h
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h
 
 !IF  "$(CFG)" == "Win32 Release"
 
@@ -340,11 +341,6 @@ DEP_MK_VE=\
 ################################################################################
 # Begin Source File
 
-SOURCE=\dev\projekty\SampleC\SampleC\src\mk_vector_long.h
-# End Source File
-################################################################################
-# Begin Source File
-
 SOURCE=\dev\projekty\SampleC\SampleC\src\mk_vector_instantiation.h
 # End Source File
 ################################################################################
@@ -353,9 +349,10 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_vector_instantiation.h
 SOURCE=..\..\src\mk_vector_instantiation.c
 DEP_MK_VEC=\
 	\dev\projekty\SampleC\SampleC\src\mk_vector_instantiation.h\
-	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.h\
 	\dev\projekty\SampleC\SampleC\src\mk_vector_template.c\
+	\dev\projekty\SampleC\SampleC\src\mk_ints.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_vector_template.h\
 	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
 	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
@@ -471,8 +468,9 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_primitives_instantiation.h
 SOURCE=..\..\src\mk_primitives_instantiation.c
 DEP_MK_PRI=\
 	\dev\projekty\SampleC\SampleC\src\mk_primitives_instantiation.h\
-	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.c\
+	\dev\projekty\SampleC\SampleC\src\mk_ints.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.h\
 	\dev\projekty\SampleC\SampleC\src\mk_mem.h\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h
@@ -523,6 +521,11 @@ $(INTDIR)/mk_mem.obj :  $(SOURCE)  $(DEP_MK_ME) $(INTDIR)
 ################################################################################
 # Begin Source File
 
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_math.h
+# End Source File
+################################################################################
+# Begin Source File
+
 SOURCE=\dev\projekty\SampleC\SampleC\src\mk_main_window.h
 # End Source File
 ################################################################################
@@ -535,13 +538,15 @@ DEP_MK_MA=\
 	\dev\projekty\SampleC\SampleC\src\mk_application.h\
 	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
 	\dev\projekty\SampleC\SampleC\src\mk_win_user.h\
-	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
 	\dev\projekty\SampleC\SampleC\src\mk_task_queue.h\
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
+	\dev\projekty\SampleC\SampleC\src\mk_counter_template.h\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
 	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_lock_critical_section.h\
 	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.h\
 	\dev\projekty\SampleC\SampleC\src\mk_vector_template.h\
+	\dev\projekty\SampleC\SampleC\src\mk_ints.h\
 	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h
 
 !IF  "$(CFG)" == "Win32 Release"
@@ -572,10 +577,12 @@ DEP_MK_MAI=\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator.h\
 	\dev\projekty\SampleC\SampleC\src\mk_main_window.h\
 	\dev\projekty\SampleC\SampleC\src\mk_task_queue.h\
+	\dev\projekty\SampleC\SampleC\src\mk_counter_template.h\
 	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_lock_critical_section.h\
 	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.h\
-	\dev\projekty\SampleC\SampleC\src\mk_vector_template.h
+	\dev\projekty\SampleC\SampleC\src\mk_vector_template.h\
+	\dev\projekty\SampleC\SampleC\src\mk_ints.h
 
 !IF  "$(CFG)" == "Win32 Release"
 
@@ -629,6 +636,25 @@ $(INTDIR)/mk_lock_critical_section.obj :  $(SOURCE)  $(DEP_MK_LO) $(INTDIR)
 ################################################################################
 # Begin Source File
 
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_ints.h
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_counter_template.h
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_counter_template.c
+DEP_MK_CO=\
+	\dev\projekty\SampleC\SampleC\src\mk_math.h\
+	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h
+# PROP Exclude_From_Build 1
+# End Source File
+################################################################################
+# Begin Source File
+
 SOURCE=\dev\projekty\SampleC\SampleC\src\mk_check_ret.h
 # End Source File
 ################################################################################
@@ -642,7 +668,8 @@ DEP_MK_CH=\
 	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
 	\dev\projekty\SampleC\SampleC\src\mk_charconv.h\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
-	\dev\projekty\SampleC\SampleC\src\mk_windows.h
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
+	\dev\projekty\SampleC\SampleC\src\mk_ints.h
 
 !IF  "$(CFG)" == "Win32 Release"
 
@@ -669,7 +696,8 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_charconv.h
 SOURCE=..\..\src\mk_charconv.c
 DEP_MK_CHA=\
 	\dev\projekty\SampleC\SampleC\src\mk_charconv.h\
-	\dev\projekty\SampleC\SampleC\src\mk_assert.h
+	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_ints.h
 
 !IF  "$(CFG)" == "Win32 Release"
 
@@ -701,14 +729,19 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_application.h
 SOURCE=..\..\src\mk_application.c
 DEP_MK_AP=\
 	\dev\projekty\SampleC\SampleC\src\mk_application.h\
-	\dev\projekty\SampleC\SampleC\src\mk_win_user.h\
-	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
-	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
 	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_charconv.h\
+	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
+	\dev\projekty\SampleC\SampleC\src\mk_ints.h\
+	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
+	\dev\projekty\SampleC\SampleC\src\mk_win_user.h\
+	\dev\projekty\SampleC\SampleC\src\mk_counter_template.c\
 	\dev\projekty\SampleC\SampleC\src\mk_main_window.h\
-	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
 	\dev\projekty\SampleC\SampleC\src\mk_task_queue.h\
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
+	\dev\projekty\SampleC\SampleC\src\mk_counter_template.h\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
+	\dev\projekty\SampleC\SampleC\src\mk_math.h\
 	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_lock_critical_section.h\
 	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.h\
@@ -731,13 +764,45 @@ $(INTDIR)/mk_application.obj :  $(SOURCE)  $(DEP_MK_AP) $(INTDIR)
 ################################################################################
 # Begin Source File
 
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.h
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=..\..\src\mk_allocator_process_heap.c
+DEP_MK_AL=\
+	\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.h\
+	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
+	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
+	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
+	\dev\projekty\SampleC\SampleC\src\mk_types.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h
+
+!IF  "$(CFG)" == "Win32 Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "Win32 Debug"
+
+$(INTDIR)/mk_allocator_process_heap.obj :  $(SOURCE)  $(DEP_MK_AL) $(INTDIR)
+   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
+ /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
+  $(SOURCE) 
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
 SOURCE=\dev\projekty\SampleC\SampleC\src\mk_allocator_heap_mt.h
 # End Source File
 ################################################################################
 # Begin Source File
 
 SOURCE=..\..\src\mk_allocator_heap_mt.c
-DEP_MK_AL=\
+DEP_MK_ALL=\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator_heap_mt.h\
 	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
 	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
@@ -751,7 +816,7 @@ DEP_MK_AL=\
 
 !ELSEIF  "$(CFG)" == "Win32 Debug"
 
-$(INTDIR)/mk_allocator_heap_mt.obj :  $(SOURCE)  $(DEP_MK_AL) $(INTDIR)
+$(INTDIR)/mk_allocator_heap_mt.obj :  $(SOURCE)  $(DEP_MK_ALL) $(INTDIR)
    $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
  /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
   $(SOURCE) 
@@ -768,7 +833,7 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_allocator_heap.h
 # Begin Source File
 
 SOURCE=..\..\src\mk_allocator_heap.c
-DEP_MK_ALL=\
+DEP_MK_ALLO=\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator_heap.h\
 	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
 	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
@@ -782,7 +847,7 @@ DEP_MK_ALL=\
 
 !ELSEIF  "$(CFG)" == "Win32 Debug"
 
-$(INTDIR)/mk_allocator_heap.obj :  $(SOURCE)  $(DEP_MK_ALL) $(INTDIR)
+$(INTDIR)/mk_allocator_heap.obj :  $(SOURCE)  $(DEP_MK_ALLO) $(INTDIR)
    $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
  /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
   $(SOURCE) 
@@ -799,7 +864,7 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_allocator_global.h
 # Begin Source File
 
 SOURCE=..\..\src\mk_allocator_global.c
-DEP_MK_ALLO=\
+DEP_MK_ALLOC=\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator_global.h\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.h\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
@@ -813,7 +878,7 @@ DEP_MK_ALLO=\
 
 !ELSEIF  "$(CFG)" == "Win32 Debug"
 
-$(INTDIR)/mk_allocator_global.obj :  $(SOURCE)  $(DEP_MK_ALLO) $(INTDIR)
+$(INTDIR)/mk_allocator_global.obj :  $(SOURCE)  $(DEP_MK_ALLOC) $(INTDIR)
    $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
  /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
   $(SOURCE) 
@@ -830,7 +895,7 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_allocator.h
 # Begin Source File
 
 SOURCE=..\..\src\mk_allocator.c
-DEP_MK_ALLOC=\
+DEP_MK_ALLOCA=\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator.h\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator_heap.h\
 	\dev\projekty\SampleC\SampleC\src\mk_allocator_heap_mt.h\
@@ -845,51 +910,13 @@ DEP_MK_ALLOC=\
 
 !ELSEIF  "$(CFG)" == "Win32 Debug"
 
-$(INTDIR)/mk_allocator.obj :  $(SOURCE)  $(DEP_MK_ALLOC) $(INTDIR)
+$(INTDIR)/mk_allocator.obj :  $(SOURCE)  $(DEP_MK_ALLOCA) $(INTDIR)
    $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
  /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
   $(SOURCE) 
 
 !ENDIF 
 
-# End Source File
-################################################################################
-# Begin Source File
-
-SOURCE=..\..\src\mk_allocator_process_heap.c
-DEP_MK_ALLOCA=\
-	\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.h\
-	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
-	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
-	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
-	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
-	\dev\projekty\SampleC\SampleC\src\mk_types.h\
-	\dev\projekty\SampleC\SampleC\src\mk_macros.h
-
-!IF  "$(CFG)" == "Win32 Release"
-
-# PROP Exclude_From_Build 1
-
-!ELSEIF  "$(CFG)" == "Win32 Debug"
-
-$(INTDIR)/mk_allocator_process_heap.obj :  $(SOURCE)  $(DEP_MK_ALLOCA)\
- $(INTDIR)
-   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
- /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
-  $(SOURCE) 
-
-!ENDIF 
-
-# End Source File
-################################################################################
-# Begin Source File
-
-SOURCE=\dev\projekty\SampleC\SampleC\src\mk_ints.h
-# End Source File
-################################################################################
-# Begin Source File
-
-SOURCE=\dev\projekty\SampleC\SampleC\src\mk_allocator_process_heap.h
 # End Source File
 # End Group
 # End Project

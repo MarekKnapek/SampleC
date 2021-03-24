@@ -120,6 +120,7 @@ void mk_main_window_construct(mk_main_window_t* const self)
 
 void mk_main_window_destroy(mk_main_window_t* const self)
 {
+	MK_UNREFERENCED(self);
 }
 
 mk_win_user_hwnd_t mk_main_window_get_hwnd(mk_main_window_t const* const self)

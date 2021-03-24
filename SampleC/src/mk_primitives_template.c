@@ -23,4 +23,5 @@ void MK_CONCAT(X, move_construct)(X* const self, X* const other)
 
 void MK_CONCAT(X, destroy)(X* const self)
 {
+	MK_UNREFERENCED(self);
 }

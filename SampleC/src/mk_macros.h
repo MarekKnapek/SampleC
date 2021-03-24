@@ -23,8 +23,16 @@
 #endif
 
 
+#if _MSC_VER >= 1200
+# define MK_UNREACHABLE do{ __assume(0); }while(0, 0)
+#else
+void mk_crash(void);
+# define MK_UNREACHABLE do{ mk_crash(); }while(0, 0)
+#endif
+
+
 #define MK_NULL 0
-#define MK_UNREFERENCED(X) (X) = (X)
+#define MK_UNREFERENCED(X) ((void)(X))
 #define MK_STATIC_ASSERT(X) { char arr[(X) ? 1 : 0]; (void)arr; }
 
 #define MK_PASTE(A, B) A ## _ ## B

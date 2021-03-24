@@ -31,14 +31,11 @@ void mk_crash(void)
 	mk_win_handle_t current_process;
 	mk_win_uint_t exit_code;
 	mk_bool_t terminated;
-	int volatile* volatile ptr;
 
 	mk_win_kernel_debug_break();
 
 	current_process = mk_win_kernel_get_current_process();
 	exit_code.m_value = 1;
 	terminated = mk_win_kernel_terminate_process(current_process, exit_code);
-
-	ptr = MK_NULL;
-	*ptr = 0;
+	MK_UNREFERENCED(terminated);
 }

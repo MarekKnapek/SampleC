@@ -16,6 +16,7 @@ void mk_allocator_global_deinit(void)
 	mk_allocator_process_heap_destroy(&mk_allocator_global_g);
 }
 
+
 void* mk_allocator_global_allocate(mk_size_t const len, mk_size_t* const real_len)
 {
 	void* ret;

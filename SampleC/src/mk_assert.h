@@ -2,13 +2,14 @@
 #define INCLUDE_GUARD_MK_ASSERT
 
 
-extern __declspec(dllimport) void __cdecl _assert(char const*, char const*, unsigned);
+void mk_crash(void);
 
 
 #ifdef NDEBUG
 #define MK_ASSERT(X) ((void)0)
 #else
-#define MK_ASSERT(X) (void)((X) || (_assert(#X, __FILE__, __LINE__), 0))
+#define MK_ASSERT(X) ((void)((X) || (mk_crash(), 0)))
 #endif
+
 
 #endif

@@ -58,7 +58,8 @@ mk_win_user_cursor_t mk_win_user_load_cursor(mk_win_user_cursor_id_t const curso
 mk_win_user_brush_t mk_win_user_get_brush(mk_win_user_brush_id_t const brush_id)
 {
 	mk_win_user_brush_t ret;
-	ret.m_value = (void*)(mk_size_t)(brush_id + 1);
+
+	ret.m_value = (void*)((mk_size_t)(brush_id) + 1);
 	return ret;
 }
 

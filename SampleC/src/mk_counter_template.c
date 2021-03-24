@@ -31,6 +31,7 @@ void MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT,
 
 void MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, destroy)(MK_CONCAT6(mk_counter, MK_T_TYPE, MK_T_DURATION, MK_T_PRECISION, MK_T_UNIT, t)* const self)
 {
+	MK_UNREFERENCED(self);
 }
 
 

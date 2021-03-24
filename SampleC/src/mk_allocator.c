@@ -13,7 +13,9 @@ void mk_allocator_construct(mk_allocator_t* const self, void* const allocator, m
 
 void mk_allocator_destroy(mk_allocator_t* const self)
 {
+	MK_UNREFERENCED(self);
 }
+
 
 void* mk_allocator_allocate(mk_allocator_t* const self, mk_size_t const len, mk_size_t* const real_len)
 {
@@ -34,6 +36,11 @@ void* mk_allocator_allocate(mk_allocator_t* const self, mk_size_t const len, mk_
 		case mk_allocator_id_process_heap:
 		{
 			ret = mk_allocator_process_heap_allocate((mk_allocator_process_heap_t*)self->m_allocator, len, real_len);
+		}
+		break;
+		default:
+		{
+			MK_UNREACHABLE;
 		}
 		break;
 	}
@@ -62,6 +69,11 @@ void* mk_allocator_reallocate_inplace(mk_allocator_t* const self, void* const pt
 			ret = mk_allocator_process_heap_reallocate_inplace((mk_allocator_process_heap_t*)self->m_allocator, ptr, len);
 		}
 		break;
+		default:
+		{
+			MK_UNREACHABLE;
+		}
+		break;
 	}
 
 	return ret;
@@ -88,6 +100,11 @@ void* mk_allocator_reallocate_copy(mk_allocator_t* const self, void* const ptr, 
 			ret = mk_allocator_process_heap_reallocate_copy((mk_allocator_process_heap_t*)self->m_allocator, ptr, len);
 		}
 		break;
+		default:
+		{
+			MK_UNREACHABLE;
+		}
+		break;
 	}
 
 	return ret;
@@ -110,6 +127,11 @@ void mk_allocator_deallocate(mk_allocator_t* const self, void* const ptr)
 		case mk_allocator_id_process_heap:
 		{
 			mk_allocator_process_heap_deallocate((mk_allocator_process_heap_t*)self->m_allocator, ptr);
+		}
+		break;
+		default:
+		{
+			MK_UNREACHABLE;
 		}
 		break;
 	}

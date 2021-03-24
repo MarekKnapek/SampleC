@@ -10,6 +10,8 @@ int __stdcall WinMain(mk_win_instance_t const instance, mk_win_instance_t const 
 	mk_application_t application;
 	int exit_code;
 
+	MK_UNREFERENCED(prev_instance);
+
 	mk_allocator_global_init();
 	mk_application_construct(&application, instance, cmd_line, cmd_show);
 	mk_application_set(&application);

@@ -1,33 +1,30 @@
 #include "mk_charconv.h"
 
 #include "mk_assert.h"
+#include "mk_macros.h"
 
 
 char* mk_to_chars_sint32(char* const begin, char const* const end, mk_sint32_t const value)
 {
+	char* ptr;
 	mk_sint32_t positive;
 	mk_uint32_t uint32;
-	char* ptr;
 	char* ret;
 
-	MK_ASSERT(begin <= end && end - begin >= 1);
+	MK_ASSERT(begin < end);
 
 	if(value < 0)
 	{
+		begin[0] = '-';
+		ptr = begin + 1;
 		positive = -value;
 	}
 	else
 	{
+		ptr = begin;
 		positive = value;
 	}
 	uint32 = (mk_uint32_t)positive;
-
-	ptr = begin;
-	if(value < 0)
-	{
-		ptr[0] = '-';
-		++ptr;
-	}
 	ret = mk_to_chars_uint32(ptr, end, uint32);
 	return ret;
 }
@@ -39,8 +36,6 @@ char* mk_to_chars_uint32(char* const begin, char const* const end, mk_uint32_t c
 	int i;
 	int digit;
 	char* ret;
-
-	MK_ASSERT(begin <= end);
 
 	n = value;
 	if(n < 10)
@@ -83,7 +78,8 @@ char* mk_to_chars_uint32(char* const begin, char const* const end, mk_uint32_t c
 	{
 		places = 10;
 	}
-	MK_ASSERT(end - begin >= places);
+	MK_ASSERT(begin < end && end - begin >= places);
+	MK_UNREFERENCED(end);
 
 	for(i = 0; i != places - 1; ++i)
 	{

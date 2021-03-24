@@ -39,6 +39,11 @@ void __stdcall mk_application_timer_proc(mk_win_user_hwnd_t const hwnd, mk_win_u
 	char buffer[12 + 3];
 	char* end;
 
+	MK_UNREFERENCED(hwnd);
+	MK_UNREFERENCED(msg);
+	MK_UNREFERENCED(id);
+	MK_UNREFERENCED(time);
+
 	curr_time = mk_win_kernel_get_tick_count();
 	msgs_per_second = mk_counter_mk_uint32_t_2000_250_1000_get_count(&mk_application_g_application->m_counter, curr_time.m_value);
 	end = mk_to_chars_uint32(buffer, buffer + 12, msgs_per_second);

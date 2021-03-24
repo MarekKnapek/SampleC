@@ -22,6 +22,7 @@ void mk_allocator_heap_mt_destroy(mk_allocator_heap_mt_t* const self)
 	MK_ASSERT(destroyed == MK_TRUE);
 }
 
+
 void* mk_allocator_heap_mt_allocate(mk_allocator_heap_mt_t* const self, mk_size_t const len, mk_size_t* const real_len)
 {
 	void* ret;

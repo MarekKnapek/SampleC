@@ -19,3 +19,7 @@ SampleC/projects/msvcpp2/ReleaseI
 SampleC/projects/msvcpp2/ReleaseO
 SampleC/projects/msvcpp2/SampleC.vcp
 SampleC/projects/msvcpp2/listing.cod
+
+SampleC/projects/msvcpp16/.vs
+SampleC/projects/msvcpp16/build
+SampleC/projects/msvcpp16/SampleC.vcxproj.user
