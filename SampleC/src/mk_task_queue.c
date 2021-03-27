@@ -20,7 +20,6 @@ void mk_task_queue_destroy(mk_task_queue_t* const self)
 	mk_lock_critical_section_destroy(&self->m_lock);
 	mk_vector_mk_task_t_destroy(&self->m_vec_2);
 	mk_vector_mk_task_t_destroy(&self->m_vec_1);
-	self->m_idx = 0;
 }
 
 void mk_task_queue_add_task(mk_task_queue_t* const self, mk_task_t const task)
