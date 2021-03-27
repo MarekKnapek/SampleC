@@ -1,326 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="debug|Win32">
-      <Configuration>debug</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="release|Win32">
-      <Configuration>release</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="debug|x64">
-      <Configuration>debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="release|x64">
-      <Configuration>release</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\jumbo\SampleC.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator_global.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator_heap.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator_heap_mt.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator_process_heap.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_application.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_charconv.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_check_ret.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_counter_template.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_lock_critical_section.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_main.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_main_window.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_mem.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_primitives_instantiation.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_primitives_template.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_task_queue.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_types.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_vector_instantiation.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_vector_template.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_win_kernel.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_win_user.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\src\mk_allocator.h" />
-    <ClInclude Include="..\..\src\mk_allocator_global.h" />
-    <ClInclude Include="..\..\src\mk_allocator_heap.h" />
-    <ClInclude Include="..\..\src\mk_allocator_heap_mt.h" />
-    <ClInclude Include="..\..\src\mk_allocator_process_heap.h" />
-    <ClInclude Include="..\..\src\mk_application.h" />
-    <ClInclude Include="..\..\src\mk_assert.h" />
-    <ClInclude Include="..\..\src\mk_charconv.h" />
-    <ClInclude Include="..\..\src\mk_check_ret.h" />
-    <ClInclude Include="..\..\src\mk_counter_template.h" />
-    <ClInclude Include="..\..\src\mk_ints.h" />
-    <ClInclude Include="..\..\src\mk_lock_critical_section.h" />
-    <ClInclude Include="..\..\src\mk_macros.h" />
-    <ClInclude Include="..\..\src\mk_main_window.h" />
-    <ClInclude Include="..\..\src\mk_mem.h" />
-    <ClInclude Include="..\..\src\mk_primitives_instantiation.h" />
-    <ClInclude Include="..\..\src\mk_primitives_template.h" />
-    <ClInclude Include="..\..\src\mk_task_queue.h" />
-    <ClInclude Include="..\..\src\mk_types.h" />
-    <ClInclude Include="..\..\src\mk_vector_instantiation.h" />
-    <ClInclude Include="..\..\src\mk_vector_template.h" />
-    <ClInclude Include="..\..\src\mk_windows.h" />
-    <ClInclude Include="..\..\src\mk_win_kernel.h" />
-    <ClInclude Include="..\..\src\mk_win_user.h" />
-  </ItemGroup>
-  <PropertyGroup Label="Globals">
-    <VCProjectVersion>16.0</VCProjectVersion>
-    <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{12df8b9d-c039-4783-b2ae-be33114ce48a}</ProjectGuid>
-    <RootNamespace>SampleC</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>NotSet</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
-  <ImportGroup Label="ExtensionSettings">
-  </ImportGroup>
-  <ImportGroup Label="Shared">
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='release|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)_o\</OutDir>
-    <IntDir>$(SolutionDir)build\$(Platform)_$(Configuration)_i\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)_o\</OutDir>
-    <IntDir>$(SolutionDir)build\$(Platform)_$(Configuration)_i\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)_o\</OutDir>
-    <IntDir>$(SolutionDir)build\$(Platform)_$(Configuration)_i\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)_o\</OutDir>
-    <IntDir>$(SolutionDir)build\$(Platform)_$(Configuration)_i\</IntDir>
-  </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-      <Optimization>Disabled</Optimization>
-      <UseStandardPreprocessor>true</UseStandardPreprocessor>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <DisableLanguageExtensions>true</DisableLanguageExtensions>
-      <DisableSpecificWarnings>4309</DisableSpecificWarnings>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
-    <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <DebugInformationFormat>None</DebugInformationFormat>
-      <Optimization>MaxSpeed</Optimization>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
-      <UseStandardPreprocessor>true</UseStandardPreprocessor>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <DisableLanguageExtensions>true</DisableLanguageExtensions>
-      <DisableSpecificWarnings>4309</DisableSpecificWarnings>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
-      <SetChecksum>true</SetChecksum>
-      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
-    <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>
-      </PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-      <Optimization>Disabled</Optimization>
-      <UseStandardPreprocessor>true</UseStandardPreprocessor>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <DisableLanguageExtensions>true</DisableLanguageExtensions>
-      <DisableSpecificWarnings>4309</DisableSpecificWarnings>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
-    <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <TreatWarningAsError>true</TreatWarningAsError>
-      <DebugInformationFormat>None</DebugInformationFormat>
-      <Optimization>MaxSpeed</Optimization>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <WholeProgramOptimization>true</WholeProgramOptimization>
-      <UseStandardPreprocessor>true</UseStandardPreprocessor>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <DisableLanguageExtensions>true</DisableLanguageExtensions>
-      <DisableSpecificWarnings>4309</DisableSpecificWarnings>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
-      <SetChecksum>true</SetChecksum>
-      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
-    </Link>
-  </ItemDefinitionGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
+	<Import Project="SampleC.props"/>
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="debug|Win32">
+			<Configuration>debug</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="release|Win32">
+			<Configuration>release</Configuration>
+			<Platform>Win32</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="debug|x64">
+			<Configuration>debug</Configuration>
+			<Platform>x64</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="release|x64">
+			<Configuration>release</Configuration>
+			<Platform>x64</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals">
+		<VCProjectVersion>16.0</VCProjectVersion>
+		<Keyword>Win32Proj</Keyword>
+		<ProjectGuid>{12df8b9d-c039-4783-b2ae-be33114ce48a}</ProjectGuid>
+		<RootNamespace>SampleC</RootNamespace>
+	</PropertyGroup>
+	<!-- General -->
+	<PropertyGroup>
+		<OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)_o\</OutDir>
+		<IntDir>$(SolutionDir)build\$(Platform)_$(Configuration)_i\</IntDir>
+		<TargetName>$(ProjectName)</TargetName>
+		<ConfigurationType>Application</ConfigurationType>
+		<WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+		<PlatformToolset>v142</PlatformToolset>
+	</PropertyGroup>
+	<!-- /General -->
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props"/>
+	<Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')"/>
+	<!-- Advanced -->
+	<PropertyGroup>
+		<UseDebugLibraries>$(mk_true_in_debug)</UseDebugLibraries>
+		<UseOfMfc>false</UseOfMfc>
+		<CharacterSet>NotSet</CharacterSet>
+		<WholeProgramOptimization>$(mk_true_in_release)</WholeProgramOptimization>
+	</PropertyGroup>
+	<!-- /Advanced -->
+	<!-- C/C++ -->
+	<!-- General -->
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<DebugInformationFormat>$(mk_debug_information_format)</DebugInformationFormat>
+			<SupportJustMyCode>$(mk_true_in_debug)</SupportJustMyCode>
+			<CompileAsManaged>false</CompileAsManaged>
+			<CompileAsWinRT>false</CompileAsWinRT>
+			<SuppressStartupBanner>true</SuppressStartupBanner>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<SDLCheck>$(mk_true_in_debug)</SDLCheck>
+			<MultiProcessorCompilation>true</MultiProcessorCompilation>
+			<EnableASAN>false</EnableASAN>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<!-- /General -->
+	<!-- Optimization -->
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<Optimization>$(mk_optimization)</Optimization>
+			<InlineFunctionExpansion>$(mk_inline_function_expansion)</InlineFunctionExpansion>
+			<IntrinsicFunctions>$(mk_true_in_release)</IntrinsicFunctions>
+			<WholeProgramOptimization>$(mk_true_in_release)</WholeProgramOptimization>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<!-- /Optimization -->
+	<!-- Preprocessor -->
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<PreprocessorDefinitions>$(mk_preprocessor_definitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<UseStandardPreprocessor>true</UseStandardPreprocessor>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<!-- /Preprocessor -->
+	<!-- Code Generation -->
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<StringPooling>true</StringPooling>
+			<ExceptionHandling>false</ExceptionHandling>
+			<SmallerTypeCheck>$(mk_true_in_debug)</SmallerTypeCheck>
+			<BasicRuntimeChecks>$(mk_basic_runtime_checks)</BasicRuntimeChecks>
+			<RuntimeLibrary>$(mk_runtime_library)</RuntimeLibrary>
+			<BufferSecurityCheck>$(mk_true_in_debug)</BufferSecurityCheck>
+			<ControlFlowGuard>$(mk_control_flow_guard)</ControlFlowGuard>
+			<FunctionLevelLinking>true</FunctionLevelLinking>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<!-- /Code Generation -->
+	<!-- Language -->
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<DisableLanguageExtensions>true</DisableLanguageExtensions>
+			<ConformanceMode>true</ConformanceMode>
+			<RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+			<RuntimeTypeInfo>false</RuntimeTypeInfo>
+			<LanguageStandard>Default</LanguageStandard>
+			<LanguageStandard_C>Default</LanguageStandard_C>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<!-- /Language -->
+	<!-- Precompiled Headers -->
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<PrecompiledHeader>NotUsing</PrecompiledHeader>
+			<PrecompiledHeaderFile/>
+			<PrecompiledHeaderOutputFile/>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<!-- Precompiled Headers -->
+	<!-- /C/C++ -->
+	<!-- Linker -->
+	<!-- General -->
+	<PropertyGroup>
+		<LinkIncremental>$(mk_true_in_debug)</LinkIncremental>
+	</PropertyGroup>
+	<ItemDefinitionGroup>
+		<Link>
+			<TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+		</Link>
+	</ItemDefinitionGroup>
+	<!-- /General -->
+	<!-- Debugging -->
+	<ItemDefinitionGroup>
+		<Link>
+			<GenerateDebugInformation>$(mk_true_in_debug)</GenerateDebugInformation>
+		</Link>
+	</ItemDefinitionGroup>
+	<!-- /Debugging -->
+	<!-- System -->
+	<ItemDefinitionGroup>
+		<Link>
+			<SubSystem>Windows</SubSystem>
+		</Link>
+	</ItemDefinitionGroup>
+	<!-- /System -->
+	<!-- Optimization -->
+	<ItemDefinitionGroup>
+		<Link>
+			<OptimizeReferences>$(mk_true_in_release)</OptimizeReferences>
+			<EnableCOMDATFolding>$(mk_true_in_release)</EnableCOMDATFolding>
+			<LinkTimeCodeGeneration>$(mk_link_time_code_generation)</LinkTimeCodeGeneration>
+		</Link>
+	</ItemDefinitionGroup>
+	<!-- /Optimization -->
+	<!-- Advanced -->
+	<ItemDefinitionGroup>
+		<Link>
+			<SetChecksum>$(mk_true_in_release)</SetChecksum>
+		</Link>
+	</ItemDefinitionGroup>
+	<!-- /Advanced -->
+	<!-- /Linker -->
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
+	<ItemGroup>
+		<ClCompile Include="..\..\jumbo\SampleC.c">
+			<ExcludedFromBuild>$(mk_true_in_debug)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator_global.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator_heap.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator_heap_mt.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator_process_heap.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_application.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_charconv.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_check_ret.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_counter_template.c">
+			<ExcludedFromBuild>true</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_lock_critical_section.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_main.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_main_window.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_mem.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_primitives_instantiation.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_primitives_template.c">
+			<ExcludedFromBuild>true</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_task_queue.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_types.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_vector_instantiation.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_vector_template.c">
+			<ExcludedFromBuild>true</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_win_kernel.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_win_user.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\src\mk_allocator.h"/>
+		<ClInclude Include="..\..\src\mk_allocator_global.h"/>
+		<ClInclude Include="..\..\src\mk_allocator_heap.h"/>
+		<ClInclude Include="..\..\src\mk_allocator_heap_mt.h"/>
+		<ClInclude Include="..\..\src\mk_allocator_process_heap.h"/>
+		<ClInclude Include="..\..\src\mk_application.h"/>
+		<ClInclude Include="..\..\src\mk_assert.h"/>
+		<ClInclude Include="..\..\src\mk_charconv.h"/>
+		<ClInclude Include="..\..\src\mk_check_ret.h"/>
+		<ClInclude Include="..\..\src\mk_counter_template.h"/>
+		<ClInclude Include="..\..\src\mk_ints.h"/>
+		<ClInclude Include="..\..\src\mk_lock_critical_section.h"/>
+		<ClInclude Include="..\..\src\mk_macros.h"/>
+		<ClInclude Include="..\..\src\mk_main_window.h"/>
+		<ClInclude Include="..\..\src\mk_mem.h"/>
+		<ClInclude Include="..\..\src\mk_primitives_instantiation.h"/>
+		<ClInclude Include="..\..\src\mk_primitives_template.h"/>
+		<ClInclude Include="..\..\src\mk_task_queue.h"/>
+		<ClInclude Include="..\..\src\mk_types.h"/>
+		<ClInclude Include="..\..\src\mk_vector_instantiation.h"/>
+		<ClInclude Include="..\..\src\mk_vector_template.h"/>
+		<ClInclude Include="..\..\src\mk_win_kernel.h"/>
+		<ClInclude Include="..\..\src\mk_win_user.h"/>
+		<ClInclude Include="..\..\src\mk_windows.h"/>
+	</ItemGroup>
 </Project>
