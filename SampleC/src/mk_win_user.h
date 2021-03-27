@@ -109,26 +109,26 @@ typedef enum mk_win_user_peek_message_e mk_win_user_peek_message_t;
 
 enum mk_win_user_window_style_e
 {
-	mk_win_user_window_style_overlapped       = 0x00000000l,
-	mk_win_user_window_style_popup            = 0x80000000l,
-	mk_win_user_window_style_child            = 0x40000000l,
-	mk_win_user_window_style_minimize         = 0x20000000l,
-	mk_win_user_window_style_visible          = 0x10000000l,
-	mk_win_user_window_style_disabled         = 0x08000000l,
-	mk_win_user_window_style_clipsiblings     = 0x04000000l,
-	mk_win_user_window_style_clipchildren     = 0x02000000l,
-	mk_win_user_window_style_maximize         = 0x01000000l,
-	mk_win_user_window_style_caption          = 0x00c00000l, /* ws_border | ws_dlgframe  */
-	mk_win_user_window_style_border           = 0x00800000l,
-	mk_win_user_window_style_dlgframe         = 0x00400000l,
-	mk_win_user_window_style_vscroll          = 0x00200000l,
-	mk_win_user_window_style_hscroll          = 0x00100000l,
-	mk_win_user_window_style_sysmenu          = 0x00080000l,
-	mk_win_user_window_style_thickframe       = 0x00040000l,
-	mk_win_user_window_style_group            = 0x00020000l,
-	mk_win_user_window_style_tabstop          = 0x00010000l,
-	mk_win_user_window_style_minimizebox      = 0x00020000l,
-	mk_win_user_window_style_maximizebox      = 0x00010000l,
+	mk_win_user_window_style_overlapped   = 0x00000000l,
+	mk_win_user_window_style_popup        = 0x80000000l,
+	mk_win_user_window_style_child        = 0x40000000l,
+	mk_win_user_window_style_minimize     = 0x20000000l,
+	mk_win_user_window_style_visible      = 0x10000000l,
+	mk_win_user_window_style_disabled     = 0x08000000l,
+	mk_win_user_window_style_clipsiblings = 0x04000000l,
+	mk_win_user_window_style_clipchildren = 0x02000000l,
+	mk_win_user_window_style_maximize     = 0x01000000l,
+	mk_win_user_window_style_caption      = 0x00c00000l, /* ws_border | ws_dlgframe  */
+	mk_win_user_window_style_border       = 0x00800000l,
+	mk_win_user_window_style_dlgframe     = 0x00400000l,
+	mk_win_user_window_style_vscroll      = 0x00200000l,
+	mk_win_user_window_style_hscroll      = 0x00100000l,
+	mk_win_user_window_style_sysmenu      = 0x00080000l,
+	mk_win_user_window_style_thickframe   = 0x00040000l,
+	mk_win_user_window_style_group        = 0x00020000l,
+	mk_win_user_window_style_tabstop      = 0x00010000l,
+	mk_win_user_window_style_minimizebox  = 0x00020000l,
+	mk_win_user_window_style_maximizebox  = 0x00010000l,
 
 	mk_win_user_window_style_overlappedwindow =
 		mk_win_user_window_style_overlapped |
@@ -144,10 +144,10 @@ enum mk_win_user_window_style_e
 	mk_win_user_window_style_childwindow =
 		mk_win_user_window_style_child,
 
-	mk_win_user_window_style_tiled            = mk_win_user_window_style_overlapped,
-	mk_win_user_window_style_iconic           = mk_win_user_window_style_minimize,
-	mk_win_user_window_style_sizebox          = mk_win_user_window_style_thickframe,
-	mk_win_user_window_style_tiledwindow      = mk_win_user_window_style_overlappedwindow,
+	mk_win_user_window_style_tiled       = mk_win_user_window_style_overlapped,
+	mk_win_user_window_style_iconic      = mk_win_user_window_style_minimize,
+	mk_win_user_window_style_sizebox     = mk_win_user_window_style_thickframe,
+	mk_win_user_window_style_tiledwindow = mk_win_user_window_style_overlappedwindow,
 };
 typedef enum mk_win_user_window_style_e mk_win_user_window_style_t;
 

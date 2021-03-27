@@ -116,6 +116,13 @@
 		</ClCompile>
 	</ItemDefinitionGroup>
 	<!-- Precompiled Headers -->
+	<!-- Advanced -->
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<DisableSpecificWarnings>4309;4310</DisableSpecificWarnings>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<!-- /Advanced -->
 	<!-- /C/C++ -->
 	<!-- Linker -->
 	<!-- General -->
