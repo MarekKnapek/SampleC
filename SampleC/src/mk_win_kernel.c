@@ -1,5 +1,6 @@
 #include "mk_win_kernel.h"
 
+#include "mk_assert.h"
 #include "mk_macros.h"
 
 
@@ -20,6 +21,13 @@ extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall HeapFree(mk_win_handle
 extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall HeapDestroy(mk_win_handle_t);
 extern MK_C __declspec(dllimport) mk_win_dword_t __stdcall GetTickCount(void);
 extern MK_C __declspec(dllimport) void __stdcall OutputDebugStringA(char const*);
+extern MK_C __declspec(dllimport) mk_win_handle_t __stdcall CreateFileW(mk_win_widechar_t const*, mk_win_dword_t, mk_win_dword_t, void*, mk_win_dword_t, mk_win_dword_t, mk_win_handle_t);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall CloseHandle(mk_win_handle_t);
+extern MK_C __declspec(dllimport) mk_win_dword_t __stdcall GetFileSize(mk_win_handle_t, mk_win_dword_t*);
+extern MK_C __declspec(dllimport) mk_win_dword_t __stdcall GetLastError(void);
+extern MK_C __declspec(dllimport) mk_win_handle_t __stdcall CreateFileMappingW(mk_win_handle_t, void*, mk_win_dword_t, mk_win_dword_t, mk_win_dword_t, mk_win_widechar_t const*);
+extern MK_C __declspec(dllimport) void* __stdcall MapViewOfFile(mk_win_handle_t, mk_win_dword_t, mk_win_dword_t, mk_win_dword_t, mk_size_t);
+extern MK_C __declspec(dllimport) mk_win_bool_t __stdcall UnmapViewOfFile(void const*);
 
 
 void mk_win_kernel_debug_break(void)
@@ -149,4 +157,76 @@ mk_win_dword_t mk_win_kernel_get_tick_count(void)
 void mk_win_kernel_output_debug_string(char const* const str)
 {
 	OutputDebugStringA(str);
+}
+
+mk_win_handle_t mk_win_kernel_create_file(mk_win_widechar_t const* const file_name, mk_win_kernel_access_right_generic_t const desired_access, mk_win_kernel_file_share_t const share_mode, void* const security_attributes, mk_win_kernel_file_create_t const creation_disposition, mk_win_kernel_file_attribute_t const flags_and_attributes, mk_win_handle_t const template_file)
+{
+	mk_win_dword_t desired_access_;
+	mk_win_dword_t share_mode_;
+	mk_win_dword_t creation_disposition_;
+	mk_win_dword_t flags_and_attributes_;
+	mk_win_handle_t ret;
+
+	desired_access_.m_value = desired_access;
+	share_mode_.m_value = share_mode;
+	creation_disposition_.m_value = creation_disposition;
+	flags_and_attributes_.m_value = flags_and_attributes;
+	ret = CreateFileW(file_name, desired_access_, share_mode_, security_attributes, creation_disposition_, flags_and_attributes_, template_file);
+	return ret;
+}
+
+mk_bool_t mk_win_kernel_close_handle(mk_win_handle_t const handle)
+{
+	mk_win_bool_t closed;
+	mk_bool_t ret;
+
+	closed = CloseHandle(handle);
+	MK_ASSERT(closed.m_value == 0 || closed.m_value == 1);
+	ret = closed.m_value != 0 ? MK_TRUE : MK_FALSE;
+	return ret;
+}
+
+mk_win_dword_t mk_win_kernel_get_file_size(mk_win_handle_t const file, mk_win_dword_t* const size_hi)
+{
+	mk_win_dword_t ret;
+
+	ret = GetFileSize(file, size_hi);
+	return ret;
+}
+
+mk_win_dword_t mk_win_kernel_get_last_error(void)
+{
+	mk_win_dword_t ret;
+
+	ret = GetLastError();
+	return ret;
+}
+
+mk_win_handle_t mk_win_kernel_create_file_mapping(mk_win_handle_t const file, void* const security_attributes, mk_win_kernel_page_protect_t const page_protect, mk_win_dword_t const max_size_hi, mk_win_dword_t const max_size_lo, mk_win_widechar_t const* const name)
+{
+	mk_win_dword_t page_protect_;
+	mk_win_handle_t ret;
+
+	page_protect_.m_value = page_protect;
+	ret = CreateFileMappingW(file, security_attributes, page_protect_, max_size_hi, max_size_lo, name);
+	return ret;
+}
+
+void* mk_win_kernel_map_view_of_file(mk_win_handle_t const mapping, mk_win_kernel_file_map_t const desired_access, mk_win_dword_t const file_offset_hi, mk_win_dword_t const file_offset_lo, mk_size_t const size)
+{
+	mk_win_dword_t desired_access_;
+	void* ret;
+
+	desired_access_.m_value = desired_access;
+	return ret = MapViewOfFile(mapping, desired_access_, file_offset_hi, file_offset_lo, size);
+}
+
+mk_bool_t mk_win_kernel_unmap_view_of_file(void const* const ptr)
+{
+	mk_win_bool_t unmapped;
+	mk_bool_t ret;
+
+	unmapped = UnmapViewOfFile(ptr);
+	ret = unmapped.m_value != 0 ? MK_TRUE : MK_FALSE;
+	return ret;
 }
