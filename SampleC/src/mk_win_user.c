@@ -77,7 +77,7 @@ mk_bool_t mk_win_user_unregister_class(mk_win_user_atom_t const atom, mk_win_ins
 
 	unregistered = UnregisterClassW((mk_win_widechar_t const*)(mk_size_t)atom.m_value, instance);
 	MK_ASSERT(unregistered.m_value == 0 || unregistered.m_value == 1);
-	ret = mk_to_bool_t(unregistered.m_value != 0);
+	ret = unregistered.m_value != 0 ? MK_TRUE : MK_FALSE;
 	return ret;
 }
 
@@ -101,7 +101,7 @@ mk_bool_t mk_win_user_show_window(mk_win_user_hwnd_t const hwnd, mk_win_user_sho
 
 	shown = ShowWindow(hwnd, show_window);
 	MK_ASSERT(shown.m_value == 0 || shown.m_value == 1);
-	ret = mk_to_bool_t(shown.m_value != 0);
+	ret = shown.m_value != 0 ? MK_TRUE : MK_FALSE;
 	return ret;
 }
 
@@ -114,7 +114,7 @@ mk_bool_t mk_win_user_peek_message(mk_win_user_msg_t* const msg, mk_win_user_hwn
 	flagss.m_value = flags;
 	peeked = PeekMessageW(msg, hwnd, filter_min, filter_max, flagss);
 	MK_ASSERT(peeked.m_value == 0 || peeked.m_value == 1);
-	ret = mk_to_bool_t(peeked.m_value != 0);
+	ret = peeked.m_value != 0 ? MK_TRUE : MK_FALSE;
 	return ret;
 }
 
@@ -125,7 +125,7 @@ mk_bool_t mk_win_user_translate_message(mk_win_user_msg_t* const msg)
 
 	translated = TranslateMessage(msg);
 	MK_ASSERT(translated.m_value == 0 || translated.m_value == 1);
-	ret = mk_to_bool_t(translated.m_value != 0);
+	ret = translated.m_value != 0 ? MK_TRUE : MK_FALSE;
 	return ret;
 }
 

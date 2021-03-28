@@ -21,7 +21,6 @@
 typedef signed char mk_bool_t;
 #define MK_FALSE ((mk_bool_t)0)
 #define MK_TRUE ((mk_bool_t)1)
-mk_bool_t mk_to_bool_t(int const val);
 
 
 #endif
