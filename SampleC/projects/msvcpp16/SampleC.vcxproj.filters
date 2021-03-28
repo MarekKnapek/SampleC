@@ -1,150 +1,168 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup>
-    <Filter Include="src">
-      <UniqueIdentifier>{7e79af10-26a8-4e08-a889-4d5e4d6a0b04}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\mk_allocator.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator_global.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator_heap.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator_heap_mt.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_allocator_process_heap.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_application.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_charconv.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_check_ret.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_counter_template.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_lock_critical_section.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_main.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_main_window.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_mem.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_primitives_instantiation.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_primitives_template.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_task_queue.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_types.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_vector_instantiation.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_vector_template.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_win_kernel.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\mk_win_user.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\jumbo\SampleC.c">
-      <Filter>src</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\src\mk_allocator.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_allocator_global.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_allocator_heap.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_allocator_heap_mt.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_allocator_process_heap.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_application.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_assert.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_charconv.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_check_ret.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_counter_template.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_ints.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_lock_critical_section.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_macros.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_main_window.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_mem.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_primitives_instantiation.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_primitives_template.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_task_queue.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_types.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_vector_instantiation.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_vector_template.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_win_kernel.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_win_user.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\mk_windows.h">
-      <Filter>src</Filter>
-    </ClInclude>
-  </ItemGroup>
+	<ItemGroup>
+		<Filter Include="src">
+			<UniqueIdentifier>{7e79af10-26a8-4e08-a889-4d5e4d6a0b04}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClCompile Include="..\..\jumbo\SampleC.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator_global.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator_heap.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator_heap_mt.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_allocator_process_heap.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_application.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_charconv.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_check_ret.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_counter_template.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_file_mapping_ro.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_file_ro.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_file_view_ro.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_lock_critical_section.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_main.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_main_window.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_mem.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_primitives_instantiation.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_primitives_template.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_task_queue.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_types.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_vector_instantiation.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_vector_template.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_win_kernel.c">
+			<Filter>src</Filter>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_win_user.c">
+			<Filter>src</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\..\src\mk_allocator.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_allocator_global.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_allocator_heap.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_allocator_heap_mt.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_allocator_process_heap.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_application.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_assert.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_charconv.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_check_ret.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_counter_template.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_file_mapping_ro.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_file_ro.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_file_view_ro.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_ints.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_lock_critical_section.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_macros.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_main_window.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_mem.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_primitives_instantiation.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_primitives_template.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_task_queue.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_types.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_vector_instantiation.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_vector_template.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_win_kernel.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_win_user.h">
+			<Filter>src</Filter>
+		</ClInclude>
+		<ClInclude Include="..\..\src\mk_windows.h">
+			<Filter>src</Filter>
+		</ClInclude>
+	</ItemGroup>
 </Project>

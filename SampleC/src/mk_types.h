@@ -18,6 +18,9 @@
 #endif
 
 
+void mk_size_t_split(mk_size_t const size, unsigned* const hi, unsigned* const lo);
+
+
 typedef signed char mk_bool_t;
 #define MK_FALSE ((mk_bool_t)0)
 #define MK_TRUE ((mk_bool_t)1)

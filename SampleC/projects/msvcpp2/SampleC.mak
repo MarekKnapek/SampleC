@@ -55,9 +55,10 @@ $(INTDIR) :
 # ADD MTL /nologo /D "NDEBUG" /win32
 MTL_PROJ=/nologo /D "NDEBUG" /win32 
 # ADD BASE CPP /nologo /W3 /GX /YX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /FR /c
-# ADD CPP /nologo /G3 /MD /Za /W3 /WX /GX /O2 /Ob2 /D "NDEBUG" /c
-# SUBTRACT CPP /YX /Fr
-CPP_PROJ=/nologo /G3 /MD /Za /W3 /WX /GX /O2 /Ob2 /D "NDEBUG" /Fo$(INTDIR)/ /c 
+# ADD CPP /nologo /G3 /MD /Za /W3 /WX /GX /Ox /Ot /Oa /Og /Oi /Ob2 /D "NDEBUG" /c
+# SUBTRACT CPP /YX /Os /Fr
+CPP_PROJ=/nologo /G3 /MD /Za /W3 /WX /GX /Ox /Ot /Oa /Og /Oi /Ob2 /D "NDEBUG"\
+ /Fo$(INTDIR)/ /c 
 CPP_OBJS=.\ReleaseI/
 # ADD BASE RSC /l 0x409 /d "NDEBUG"
 # ADD RSC /l 0x409 /d "NDEBUG"
@@ -140,7 +141,10 @@ BSC32_SBRS= \
 	.\DebugIB\mk_allocator_heap_mt.sbr \
 	.\DebugIB\mk_allocator_heap.sbr \
 	.\DebugIB\mk_allocator_global.sbr \
-	.\DebugIB\mk_allocator.sbr
+	.\DebugIB\mk_allocator.sbr \
+	.\DebugIB\mk_file_view_ro.sbr \
+	.\DebugIB\mk_file_mapping_ro.sbr \
+	.\DebugIB\mk_file_ro.sbr
 
 $(OUTDIR)/SampleC.bsc : $(OUTDIR)  $(BSC32_SBRS)
     $(BSC32) @<<
@@ -149,7 +153,7 @@ $(OUTDIR)/SampleC.bsc : $(OUTDIR)  $(BSC32_SBRS)
 
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NOLOGO /SUBSYSTEM:windows /DEBUG /MACHINE:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NOLOGO /SUBSYSTEM:windows /INCREMENTAL:no /MAP /DEBUG /MACHINE:I386 /STUB:""
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NOLOGO /SUBSYSTEM:windows /INCREMENTAL:no /MAP /DEBUG /MACHINE:I386
 LINK32_FLAGS=kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib\
  advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib\
  odbccp32.lib /NOLOGO /SUBSYSTEM:windows /INCREMENTAL:no\
@@ -174,7 +178,10 @@ LINK32_OBJS= \
 	$(INTDIR)/mk_allocator_heap_mt.obj \
 	$(INTDIR)/mk_allocator_heap.obj \
 	$(INTDIR)/mk_allocator_global.obj \
-	$(INTDIR)/mk_allocator.obj
+	$(INTDIR)/mk_allocator.obj \
+	$(INTDIR)/mk_file_view_ro.obj \
+	$(INTDIR)/mk_file_mapping_ro.obj \
+	$(INTDIR)/mk_file_ro.obj
 
 $(OUTDIR)/SampleC.exe : $(OUTDIR)  $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -208,6 +215,9 @@ DEP_SAMPL=\
 	..\..\src\mk_application.c\
 	..\..\src\mk_charconv.c\
 	..\..\src\mk_check_ret.c\
+	..\..\src\mk_file_mapping_ro.c\
+	..\..\src\mk_file_ro.c\
+	..\..\src\mk_file_view_ro.c\
 	..\..\src\mk_lock_critical_section.c\
 	..\..\src\mk_main.c\
 	..\..\src\mk_main_window.c\
@@ -227,9 +237,14 @@ DEP_SAMPL=\
 	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
 	\dev\projekty\SampleC\SampleC\src\mk_check_ret.h\
 	\dev\projekty\SampleC\SampleC\src\mk_application.h\
-	\dev\projekty\SampleC\SampleC\src\mk_win_user.h\
 	\dev\projekty\SampleC\SampleC\src\mk_charconv.h\
+	\dev\projekty\SampleC\SampleC\src\mk_ints.h\
+	\dev\projekty\SampleC\SampleC\src\mk_win_user.h\
+	\dev\projekty\SampleC\SampleC\src\mk_counter_template.c\
 	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
+	\dev\projekty\SampleC\SampleC\src\mk_file_mapping_ro.h\
+	\dev\projekty\SampleC\SampleC\src\mk_file_ro.h\
+	\dev\projekty\SampleC\SampleC\src\mk_file_view_ro.h\
 	\dev\projekty\SampleC\SampleC\src\mk_lock_critical_section.h\
 	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
 	\dev\projekty\SampleC\SampleC\src\mk_main_window.h\
@@ -241,13 +256,15 @@ DEP_SAMPL=\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
 	\dev\projekty\SampleC\SampleC\src\mk_vector_instantiation.h\
 	\dev\projekty\SampleC\SampleC\src\mk_primitives_template.h\
+	\dev\projekty\SampleC\SampleC\src\mk_counter_template.h\
+	\dev\projekty\SampleC\SampleC\src\mk_math.h\
 	\dev\projekty\SampleC\SampleC\src\mk_vector_template.h
 
 !IF  "$(CFG)" == "Win32 Release"
 
 $(INTDIR)/SampleC.obj :  $(SOURCE)  $(DEP_SAMPL) $(INTDIR)
-   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /O2 /Ob2 /D "NDEBUG" /Fo$(INTDIR)/ /c\
-  $(SOURCE) 
+   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Ox /Ot /Oa /Og /Oi /Ob2 /D "NDEBUG"\
+ /Fo$(INTDIR)/ /c  $(SOURCE) 
 
 !ELSEIF  "$(CFG)" == "Win32 Debug"
 
@@ -255,6 +272,11 @@ $(INTDIR)/SampleC.obj :  $(SOURCE)  $(DEP_SAMPL) $(INTDIR)
 
 !ENDIF 
 
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_vector_long.h
 # End Source File
 ################################################################################
 # Begin Source File
@@ -302,6 +324,7 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h
 SOURCE=..\..\src\mk_win_kernel.c
 DEP_MK_WIN=\
 	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
+	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
 	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
 	\dev\projekty\SampleC\SampleC\src\mk_windows.h
@@ -385,7 +408,6 @@ SOURCE=\dev\projekty\SampleC\SampleC\src\mk_types.h
 SOURCE=..\..\src\mk_types.c
 DEP_MK_TY=\
 	\dev\projekty\SampleC\SampleC\src\mk_types.h\
-	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
 	\dev\projekty\SampleC\SampleC\src\mk_macros.h
 
 !IF  "$(CFG)" == "Win32 Release"
@@ -697,6 +719,7 @@ SOURCE=..\..\src\mk_charconv.c
 DEP_MK_CHA=\
 	\dev\projekty\SampleC\SampleC\src\mk_charconv.h\
 	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h\
 	\dev\projekty\SampleC\SampleC\src\mk_ints.h
 
 !IF  "$(CFG)" == "Win32 Release"
@@ -917,6 +940,102 @@ $(INTDIR)/mk_allocator.obj :  $(SOURCE)  $(DEP_MK_ALLOCA) $(INTDIR)
 
 !ENDIF 
 
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=..\..\src\mk_file_view_ro.c
+DEP_MK_FI=\
+	\dev\projekty\SampleC\SampleC\src\mk_file_view_ro.h\
+	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
+	\dev\projekty\SampleC\SampleC\src\mk_file_mapping_ro.h\
+	\dev\projekty\SampleC\SampleC\src\mk_types.h\
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
+	\dev\projekty\SampleC\SampleC\src\mk_file_ro.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h
+
+!IF  "$(CFG)" == "Win32 Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "Win32 Debug"
+
+$(INTDIR)/mk_file_view_ro.obj :  $(SOURCE)  $(DEP_MK_FI) $(INTDIR)
+   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
+ /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
+  $(SOURCE) 
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_file_view_ro.h
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=..\..\src\mk_file_mapping_ro.c
+DEP_MK_FIL=\
+	\dev\projekty\SampleC\SampleC\src\mk_file_mapping_ro.h\
+	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
+	\dev\projekty\SampleC\SampleC\src\mk_file_ro.h\
+	\dev\projekty\SampleC\SampleC\src\mk_types.h\
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h
+
+!IF  "$(CFG)" == "Win32 Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "Win32 Debug"
+
+$(INTDIR)/mk_file_mapping_ro.obj :  $(SOURCE)  $(DEP_MK_FIL) $(INTDIR)
+   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
+ /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
+  $(SOURCE) 
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_file_mapping_ro.h
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=..\..\src\mk_file_ro.c
+DEP_MK_FILE=\
+	\dev\projekty\SampleC\SampleC\src\mk_file_ro.h\
+	\dev\projekty\SampleC\SampleC\src\mk_assert.h\
+	\dev\projekty\SampleC\SampleC\src\mk_win_kernel.h\
+	\dev\projekty\SampleC\SampleC\src\mk_types.h\
+	\dev\projekty\SampleC\SampleC\src\mk_windows.h\
+	\dev\projekty\SampleC\SampleC\src\mk_macros.h
+
+!IF  "$(CFG)" == "Win32 Release"
+
+# PROP Exclude_From_Build 1
+
+!ELSEIF  "$(CFG)" == "Win32 Debug"
+
+$(INTDIR)/mk_file_ro.obj :  $(SOURCE)  $(DEP_MK_FILE) $(INTDIR)
+   $(CPP) /nologo /G3 /MD /Za /W3 /WX /GX /Zi /Od /D "_DEBUG" /FAcs\
+ /Fa"listing" /FR"DebugIB/" /Zn /Fo$(INTDIR)/ /Fd$(OUTDIR)/"SampleC.pdb" /c\
+  $(SOURCE) 
+
+!ENDIF 
+
+# End Source File
+################################################################################
+# Begin Source File
+
+SOURCE=\dev\projekty\SampleC\SampleC\src\mk_file_ro.h
 # End Source File
 # End Group
 # End Project

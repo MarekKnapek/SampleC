@@ -198,6 +198,15 @@
 		<ClCompile Include="..\..\src\mk_counter_template.c">
 			<ExcludedFromBuild>true</ExcludedFromBuild>
 		</ClCompile>
+		<ClCompile Include="..\..\src\mk_file_mapping_ro.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_file_ro.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
+		<ClCompile Include="..\..\src\mk_file_view_ro.c">
+			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
+		</ClCompile>
 		<ClCompile Include="..\..\src\mk_lock_critical_section.c">
 			<ExcludedFromBuild>$(mk_true_in_release)</ExcludedFromBuild>
 		</ClCompile>
@@ -246,6 +255,9 @@
 		<ClInclude Include="..\..\src\mk_charconv.h"/>
 		<ClInclude Include="..\..\src\mk_check_ret.h"/>
 		<ClInclude Include="..\..\src\mk_counter_template.h"/>
+		<ClInclude Include="..\..\src\mk_file_mapping_ro.h"/>
+		<ClInclude Include="..\..\src\mk_file_ro.h"/>
+		<ClInclude Include="..\..\src\mk_file_view_ro.h"/>
 		<ClInclude Include="..\..\src\mk_ints.h"/>
 		<ClInclude Include="..\..\src\mk_lock_critical_section.h"/>
 		<ClInclude Include="..\..\src\mk_macros.h"/>
